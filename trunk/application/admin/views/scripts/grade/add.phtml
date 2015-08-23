@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> ECMall </title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+//<!CDATA[
+var SITE_URL = "http://localhost/ecmall";
+//]]>
+</script>
+<script type="text/javascript" src="js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/admin.js" charset="utf-8"></script>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+</head>
+<body><div id="rightTop">
+  <p>会员</p>
+  <ul class="subnav">
+    <li><a class="btn1" href="<?php echo $this->RootUrl()?>/admin/grade/index">管理</a></li>
+    <li><span>添加会员组</span></li>
+  </ul>
+</div>
+<div class="info">
+  <form method="post" enctype="multipart/form-data" id="test_form" action="<?php echo $this->RootUrl();?>/admin/grade/add-form">
+    <table class="infoTable">
+      <tr>
+          <th></th>
+        <td class="paddingT15">请输入会员组信息&nbsp;&nbsp;<font color="red">(带*为必须要填)</font></td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 等级名称:</th>
+        <td class="paddingT15 wordSpacing5"><input name="name" type="text" id="user_name" size="15"/>&nbsp;&nbsp;<font color="red">*</font></td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 积分下限:</th>
+        <td class="paddingT15 wordSpacing5"><input name="min" type="text" size="8"/>&nbsp;&nbsp;<font color="red">*</font></td>
+      </tr>
+       <tr>
+        <th class="paddingT15"> 积分上限:</th>
+        <td class="paddingT15 wordSpacing5"><input type="text" name="max"  size="8"/>&nbsp;&nbsp;<font color="red">*</font></td>
+      </tr>
+       <tr>
+        <th class="paddingT15"> 折扣:</th>
+        <td class="paddingT15 wordSpacing5"><input type="text" name="discount"  size="8"/> <font color="red">&nbsp;&nbsp;* 格式为(9.7 或者 8.5)</font></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td class="ptb20"><input class="formbtn" type="submit" name="submit" value="提交" />&nbsp;&nbsp;&nbsp;&nbsp;
+          <input class="formbtn" type="reset" name="Reset" value="重置" /></td>
+      </tr>
+    </table>
+  </form>
+</div>
+<p id="page_footer">Copyright 2003-2009 ShopEx Inc.,All rights reserved.</p>
+</body>
+</html>

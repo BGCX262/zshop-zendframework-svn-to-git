@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> ECMall </title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/admin.js" charset="utf-8"></script>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+</head>
+<body><div id="rightTop">
+  <p>分类修改</p>
+  <ul class="subnav">
+    <li><a class="btn1" href="<?php echo $this->url(array('action' => 'index')); ?>">分类管理</a></li>
+  </ul>
+</div>
+<div class="info">
+  <form method="post" id="add_form" action="<?php echo $this->url(array('action' => 'update')); ?>">
+    <table class="infoTable">
+      <tr>
+          <th></th>
+        <td class="paddingT15">商品分类信息</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 上级分类:</th>
+        <td class="paddingT15 wordSpacing5">
+        <select name="pid">
+          <option value="0">顶级目录</option>
+          <?php 
+              foreach($this -> catArray as $catDetail){
+                  $blank ='';
+                  $checked = '';
+                  $catDetail['id']==$this -> id && $checked='selected="selected"';
+                  for($i=0;$i<$catDetail['depth'];$i++){
+                      $blank = $blank . '&nbsp;&nbsp;&nbsp;&nbsp';
+                  }
+                  echo "<option value='{$catDetail["pid"]}' {$checked}>{$blank}{$catDetail['catname']}</option>" . "\r\n\t";
+              }
+          ?>
+        </select>
+        *</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 商品分类名称:</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="catname" type="text" value ="<?php echo $this -> cat -> catname;?>" style="width:200px" />*</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 商品分类描述:</th>
+        <td class="paddingT15 wordSpacing5"><textarea class="infoTableInput2" name="description"><?php echo $this -> cat -> description;?></textarea>*</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 导航显示:</th>
+        <td class="paddingT15 wordSpacing5"><input name="display" type="radio" value="1" <?php if($this -> cat -> display==1){echo 'checked="checked"';}?> />显示<input name="display" type="radio" value="0" <?php if($this -> cat -> display ==0){echo 'checked="checked"';}?>/>不显示</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 排序:</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="order" type="text" value ="<?php echo $this -> cat -> order;?>"/></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td class="ptb20"><input class="formbtn" type="submit" name="submit" value="提交" />
+          <input class="formbtn" type="button" name="return" value="返回" onclick="javascript:history.back();return false;"/></td>
+      </tr>
+    </table>
+  </form>
+</div>
+<p id="page_footer">&copy;.&copy;。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。&copy;.&copy;</p>
+</body>
+</html>

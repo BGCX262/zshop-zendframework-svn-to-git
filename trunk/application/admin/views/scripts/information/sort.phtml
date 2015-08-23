@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> 添加分类 </title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/admin.js" charset="utf-8"></script>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+</head>
+<body><div id="rightTop">
+  <p>添加分类</p>
+  <ul class="subnav">
+    <li><a class="btn1" href="<?php echo $this->RootUrl();?>/admin/information/sortindex">分类管理</a></li>
+  </ul>
+</div>
+<div class="info">
+  <form method="post" id="add_form" action="<?php echo $this -> RootUrl()?>/admin/information/insert">
+    <table class="infoTable">
+      <tr>
+          <th></th>
+        <td class="paddingT15">请输入文章分类信息</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 上级分类:</th>
+        <td class="paddingT15 wordSpacing5">
+        <select name="pid">
+          <option value="0">顶级目录</option>
+          <?php 
+              foreach($this -> all as $val){
+           		$blank = '';
+              	for($i=0;$i<$val['depth'];$i++){
+              		$blank .= "--";
+              		
+              	}
+          ?>
+          <option value="<?php echo $val['id']?>"><?php echo $blank.$val['cat_name'];?></option>
+<?php 
+              }
+?>
+        </select>
+      </td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 文章分类名称:</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="catname" type="text" style="width:200px" />*</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 文章分类描述:</th>
+        <td class="paddingT15 wordSpacing5"><textarea class="infoTableInput2" name="description"></textarea>*</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 导航显示:</th>
+        <td class="paddingT15 wordSpacing5"><input name="display" type="radio" value="1" checked="checked" />显示<input name="display" type="radio" value="0" />不显示</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 排序:</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="order" type="text" /></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td class="ptb20"><input class="formbtn" type="submit" value="提交" />
+          <input class="formbtn" type="reset" name="Reset" value="重置" /></td>
+      </tr>
+    </table>
+  </form>
+</div>
+<p id="page_footer">&copy;.&copy;。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。&copy;.&copy;</p>
+</body>
+</html>

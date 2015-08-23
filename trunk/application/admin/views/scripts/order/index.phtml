@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> ECMall </title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+//<!CDATA[
+var SITE_URL = "http://localhost/ecmall";
+//]]>
+</script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/admin.js" charset="utf-8"></script>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+</head>
+<body><div id="rightTop">
+  <p>订单</p>
+  <ul class="subnav">
+        <li><span>管理</span></li>
+        <li><a class="btn1" href="<?php echo $this->RootUrl();?>/admin/order/add">添加订单</a></li>
+      </ul>
+</div>
+<div class="mrightTop">
+  <div class="fontl">
+    <form method="get">
+       <div class="left">
+       订单号:<input type="text" name="order" />
+       收货人:<input type="text" name="get" />
+	  订单状态:
+          <select class="querySelect" name="status">
+            <option value="0">请选择...</option>
+            <option value="1">已确定</option>
+	    <option value="2">未确定</option>
+	    <option value="3">退货</option>
+	    <option value="4">未发货</option>
+	    <option value="5">已发货</option>
+	    <option value="6">已付款</option>
+	    <option value="7">未付款</option>
+	   </select>
+          <input type="submit" class="formbtn" class="formbtn" value="查询" />
+      </div>
+          </form>
+  </div>
+  <div class="fontr"> </div>
+</div>
+<div class="tdare">
+  <table width="100%" cellspacing="0" class="dataTable">
+        <tr class="tatr1">
+      <td width="20" class="firstCell"><input type="checkbox" name="check" /></td>
+      <td>订单号</td>
+      <td><span ectype="order_by" fieldname="store_name">下单时间</span></td>
+      <td><span ectype="order_by" fieldname="sgrade">收货人</span></td>
+      <td><span ectype="order_by" fieldname="sgrade">总金额</span></td>
+      <td class="table-center"><span ectype="order_by" fieldname="add_time">订单状态</span></td>
+	<td class="handler">操作</td>
+    </tr>
+	<?php foreach($this->datalist as $data){ ?>
+            <tr class="tatr2">
+      <td class="firstCell"></td>
+      <td><input type="checkbox" name="check" /><?php echo $data['order_id']; ?></td>
+      <td>
+      <?php echo date("Y-m-d");?>&nbsp;&nbsp;<?php echo $data['user_name'];?>
+      </td>
+       <td>
+      <?php echo $data['get_name'];?>
+      </td>
+      <td><?php echo $data['total_amount']; ?></td>
+      <td class="table-center"><?php echo $data['order_status']; ?></td>
+            <td class="handler">
+                <a href="<?php echo $this -> RootUrl(); ?>/admin/member/update/id/<?php echo $data['id']; ?>'">查看</a> | <a href="javascript:drop_confirm('您确定要删除改会员？', '<?php echo $this -> RootUrl(); ?>/admin/member/delete/id/<?php echo $data['id']; ?>');">移除</a> 
+        </td>
+    </tr>
+    <?php } ?>
+      </table>
+  <div class="clear"></div>  
+</div>
+<p id="page_footer">&copy;.&copy;。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。&copy;.&copy;</p>
+</body>
+</html>

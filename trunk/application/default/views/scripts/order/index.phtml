@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="<?php echo $this->RootUrl();?>/css/myorder.css" />
+<!--
+<script type="text/javascript" src="<?php echo $this->RootUrl();?>/js/tab.js" charset="utf-8"/>
+-->
+<script type="text/javascript">
+
+	function showDate(){
+		var obj,date,day;
+		obj = new Date();
+		date = obj.getFullYear() + "-";
+		date += (obj.getMonth()+1) + "-";
+		date += obj.getDate() + " ";
+		date += obj.getHours() + ":";
+		date += obj.getMinutes() + ":";
+		date += obj.getSeconds() + " ";
+		switch (obj.getDay()) {
+                case 0:
+                    date += "星期日";
+                    break;
+                case 1:
+                    date += "星期一";
+                    break;
+                case 2:
+                   date += "星期二";
+                    break;
+                case 3:
+                    date += "星期三";
+                    break;
+                case 4:
+                   date += "星期四";
+                    break;
+                case 5:
+                    date += "星期五";
+                    break;
+                case 6:
+                   date += "星期六";
+                    break;
+            }
+
+		
+		
+		document.getElementById("sj").innerHTML = date;
+	}
+	window.setInterval("showDate()",1000);
+	var id;
+	function $($id){
+		id = document.getElementById($id);
+		return id;
+	}
+	
+	function selectTab03Syn ( i )
+	{
+		switch(i){
+			case 1:
+			$("TabTab03Con1").style.display="block";
+			$("TabTab03Con2").style.display="none";
+			$("TabTab03Con3").style.display="none";
+			$("TabTab03Con4").style.display="none";
+			$("font1").style.color="#000000";
+			$("font2").style.color="#B0B0B0";
+			$("font3").style.color="#B0B0B0";
+			$("font4").style.color="#B0B0B0";
+			break;
+			case 2:
+			$("TabTab03Con1").style.display="none";
+			$("TabTab03Con2").style.display="block";
+			$("TabTab03Con3").style.display="none";
+			$("TabTab03Con4").style.display="none";
+			$("font1").style.color="#B0B0B0";
+			$("font2").style.color="#000000";
+			$("font3").style.color="#B0B0B0";
+			$("font4").style.color="#B0B0B0";
+			break;
+			case 3:
+			$("TabTab03Con1").style.display="none";
+			$("TabTab03Con2").style.display="none";
+			$("TabTab03Con3").style.display="block";
+			$("TabTab03Con4").style.display="none";
+			$("font1").style.color="#B0B0B0";
+			$("font2").style.color="#B0B0B0";
+			$("font3").style.color="#000000";
+			$("font4").style.color="#B0B0B0";
+			break;
+			case 4:
+			$("TabTab03Con1").style.display="none";
+			$("TabTab03Con2").style.display="none";
+			$("TabTab03Con3").style.display="none";
+			$("TabTab03Con4").style.display="block";
+			$("font1").style.color="#B0B0B0";
+			$("font2").style.color="#B0B0B0";
+			$("font3").style.color="#B0B0B0";
+			$("font4").style.color="#000000";
+			break;
+		}
+	}
+
+</script>
+<title>myorder</title>
+</head>
+
+<body>
+<div id="welcome">
+	<div class="left">你好，欢迎来到源码商城！ [请登录] <a href="#">[免费注册]</a></div>
+    <div class="right">购物车 | 交易安全 | 帮助</div>
+</div>
+<!-- end welcome-->
+<div id="logo">
+	<div class="img"><img src="<?php echo $this->RootUrl();?>/images/loglo.jpg" /></div>
+    <div class="form">
+    <form method="get" action="" >
+    	<input type="text" name="search" />
+        <select name="catalog">
+        	<option value="0">所以分类</option>
+		<?php foreach($this->catalog as $cat){ ?>
+		<option value="0"><?php echo $cat['catname']; ?></option>
+		<?php } ?>
+        </select>
+        <input type="image" src="<?php echo $this->RootUrl();?>/images/search.jpg" class="image" />
+    </form>
+    </div>
+</div>
+<!-- end logo-->
+<div id="menu">
+	<ul>
+    	<li><a href="#">首页</a></li>
+        <li><a href="#">商品中心</a></li>
+        <li><a href="#">新闻中心</a></li>
+        <li><a href="#">商城活动</a></li>
+        <li><a href="#">品牌列表</a></li>
+        <li><a href="#">帮助中心</a></li>
+        <li><a href="#">发货通知</a></li>
+        <li><a href="#">在线留言</a></li>
+    </ul>
+	 <p> 您的购物车有0件商品  去结算</p>
+</div>
+<!-- end menu-->
+<div id="myshoping">
+	<div class="left"><font>我的商城</font> | <span id="sj"></span></div>
+    <div class="right"><p>亲爱的<font>XXX</font>,欢迎您来到源码商城</p></div>
+</div>
+<!-- end myshoping-->
+<div id="main">
+	<div id="main_left">
+		<div id="member">
+			<img src="<?php echo $this->RootUrl();?>/images/portrait.jpg" /> 
+			<p class="welcome">欢迎您</p><br />
+			<a href="#" class="name">XXX</a>
+			<p class="member">身份:普通会员</p>
+			<p class="member">累计积分:1218</p>
+		</div>
+		<div id="order">
+				<div class="title">订单/支付</div>
+				<div class="list"><a href="<?php echo $this->RootUrl();?>/order/index">我的订单</a></div>
+				<div class="list">订单支付历史</div>
+		</div>
+		<div id="account">
+			<div class="title">账户管理</div>
+			<div class="list"><a href="<?php echo $this->RootUrl();?>/orderdelivery/index">收货地址薄</a></div>
+			<div class="list">账户余额</div>
+		</div>
+		<div id="personal">
+			<div class="title">个人信息管理</div>
+			<div class="list">修改会员信息</div>
+			<div class="list">修改密码</div>
+			<div class="list"><a href="javascript:drop_confirm('您确定要退出？', '<?php echo $this -> RootUrl(); ?>/member/logout/id/<?php echo $data['id']; ?>');">安全退出</a></div>
+		</div> 
+
+    </div>
+    <div id="main_right">
+		<div id="bg" class="xixi1">
+			<div id="font1" class="tab1" onclick="selectTab03Syn(1);document.getElementById('bg').className='xixi1'">所有订单</div>
+			<div id="font2" class="tab2" onclick="selectTab03Syn(2);document.getElementById('bg').className='xixi2'">预支付的订单</div>
+			<div id="font3" class="tab3" onclick="selectTab03Syn(3);document.getElementById('bg').className='xixi3'">需确定收货的订单</div>
+			<div id="font4" class="tab4" onclick="selectTab03Syn(4);document.getElementById('bg').className='xixi4'">需评价商家的订单</div>
+		</div>
+		<div id="TabTab03Con1">
+		<table class="table">
+			<tr class="th">
+				<td class="name">订单号</td>
+				<td>收款人</td>
+				<td>付款方式</td>
+				<td>订单总金额</td>
+				<td>订单状态</td>
+				<td>下单时间</td>
+				<td>操作</td>
+			</tr>
+			<?php foreach($this->datalist as $data){ ?>
+			<tr>
+				<input type="hidden" name="id" value="<?php echo $data['id'];?>" />
+				<td class="name"><?php echo $data['order_id'];?></td>
+				<td><?php echo $data['get_name'];?></td>
+				<td><?php echo $data['delivery_name'];?></td>
+				<td>￥<?php echo $data['total_amount'];?></td>
+				<td><?php echo $data['order_status'];?></td>
+				<td><?php echo $data['order_time'];?></td>
+				<td>查看</td>
+			</tr>
+			<?php }?>
+			<tr>
+				<td colspan="5">
+					<div class="con">运费:10元 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商品金额总计:<font>175.00元</font>&nbsp;&nbsp;&nbsp;<a href="#">索取发票</a></div>
+				</td>
+			</tr>
+			<tr class="tar2"><td style="text-align: center;"><td colspan="5" style="text-align: center;"><?php include APPLICATION_PATH . '/admin/views/scripts/common/page.phtml';?></td>
+			</tr>
+		</table>
+		</div>
+		<div id="TabTab03Con2" style="display:none">动态改变div的class以实现css的切换</div>
+		<div id="TabTab03Con3" style="display:none">js</div>
+		<div id="TabTab03Con4" style="display:none">424234</div>
+    </div>
+</div>
+<!-- end main-->
+<div></div>
+<div id="clear"></div>
+<div id="foot">
+	<P>长沙源码计算机信息咨询有限公司 版权所有 &copy; 2012 湘ICP备1212121213号 | 0731-3743219</P>
+</div>
+</body>
+</html>

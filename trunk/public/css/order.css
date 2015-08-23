@@ -1,0 +1,54 @@
+*{ margin:0; padding:0; color:#7D7D7D;}
+
+#welcome{ background:#E4E4E4;height:30px; width:1000px; margin:0 auto;}
+#welcome a{ color:#913041; text-decoration:none;}
+#welcome .left{ float:left;line-height:30px; padding-left:30px;}
+#welcome .right{ float:right; padding-right:60px;line-height:30px;}
+/*************************/
+
+#logo{ height:135px;width:970px; margin:0 auto; }
+#logo .img{ float:left; padding:30px 0 5px 20px;}
+#logo .form{ float:right; padding-top:100px; padding-right:15px;}
+#logo .image{ margin-bottom:-10px;}
+/*************************/
+
+#menu{ background:#3C3C3C;height:40px; width:970px; margin:0 auto; }
+#menu li{list-style:none;height:40px; display:block; float:left;line-height:40px; padding:0 10px; color:#FFF; border-right:2px solid #FFF;}
+#menu p{ float:right;line-height:40px; padding-right:10px;color:#FFF;}
+#menu a{ color:#FFF; text-decoration:none;}
+/*********************/
+#main{width:930px; margin:0 auto; margin-top:20px; border-bottom:2px solid #666666; overflow:hidden;border:#F3F3F3 3px solid;}
+#message{ padding-top:30px; height:200px; }
+#message font{ padding:30px 20px 0 50px; font-weight:bold;}
+#message a{ text-decoration:none; color:#990000;}
+#message p{ margin-left:90px; padding-top:20px;}
+#deliver{ padding-top:30px; height:80px; border-bottom:2px solid #F3F3F3;}
+#deliver font{ padding:30px 20px 0 50px; font-weight:bold;}
+#deliver a{ text-decoration:none; color:#990000;}
+#deliver p{ margin-left:90px; padding-top:20px;}
+#payment{ padding-top:30px; height:80px; border-bottom:2px solid #F3F3F3;}
+#payment font{ padding:30px 20px 0 50px; font-weight:bold;}
+#payment a{ text-decoration:none; color:#990000;}
+#payment p{ margin-left:90px; padding-top:20px;}
+#inventory font{ padding:30px 20px 0 50px; font-weight:bold;}
+#clear{clear:both;}
+/***********************/
+#title{ padding:30px 20px 0 50px; font-weight:bold; margin-bottom:15px;}
+#list{ width:815px;margin:0 auto; margin-bottom:20px;}
+#list .shoping{ float:left; font-weight:bold;}
+#list .shop{ float:right; text-decoration:none; color:#990000;}
+#list .table{ width:810px; border:2px solid #C8C8C8; border-collapse:collapse;}
+#list .name{ text-indent:25px;}
+#list .th{ background:#C6C6C6; height:40px; line-height:35px; empty-cells:hide;}
+#list tr{ height:36px; line-height:36px; background:url(../img/fengexian.jpg) 15px 0 no-repeat;}
+#list td{border:0;}
+#list .con{ text-align:right; padding-right:25px;}
+#list .con font{ color:#FF0000; font-size:24px;}
+#list .con a{ text-decoration:none;color:#990000;}
+
+
+
+/*********************/
+#ordersubmit{width:815px;margin:30px auto; text-align:right;}
+/*********************/
+#foot{ text-align:center; margin:40px auto;}

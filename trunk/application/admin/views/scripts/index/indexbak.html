@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=gbk" />
+<meta http-equiv="Content-Type" content="text/html;charset=gbk" />
+<title>商城后台 -- Powered by ECMall</title>
+<link href="css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="./js/jquery.js" charset="gbk"></script>
+<script type="text/javascript" src="./js/ecmall.js" charset="gbk"></script>
+
+<script type="text/javascript">
+var menu = 
+    {
+        "dashboard":
+            {"text":"控制台","subtext":"常用操作","default":"welcome","children":
+                {
+                    "welcome":{"text":"欢迎页面","url":"welcome.html"},
+                    "aboutus":{"text":"关于我们","url":"index.php?act=aboutus"},
+                    "base_setting":{"parent":"setting","text":"网站设置",
+                    "url":"index.php?app=setting&act=base_setting"},
+                    "user_manage":{"text":"会员管理","parent":"user","url":"list.html"},
+                    "store_manage":{"text":"店铺管理","parent":"store","url":"list.html"},
+                    "goods_manage":{"text":"商品管理","parent":"goods","url":"list.html"},
+                    "order_manage":{"text":"订单管理","parent":"trade","url":"list.html"}
+                 }
+            },
+        "setting":
+            {"text":"设置","default":"base_setting","children":
+                {
+                    "base_setting":{"text":"网站设置","url":"index.php?app=setting&act=base_setting"},
+                    "region":{"text":"地区设置","url":"index.php?app=region"},
+                    "payment":{"text":"支付方式","url":"index.php?app=payment"},
+                    "theme":{"text":"主题设置","url":"index.php?app=theme"},
+                    "template":{"text":"模板编辑","url":"index.php?app=template"},
+                    "mailtemplate":{"text":"通知模板","url":"index.php?app=mailtemplate"}
+                }
+            },
+        "goods":
+            {"text":"商品","default":"goods_manage","children":
+                {
+                        "gcategory":{"text":"分类管理","url":"index.php?app=gcategory"},
+                        "brand":{"text":"品牌管理","url":"index.php?app=brand"},
+                        "goods_manage":{"text":"商品管理","url":"index.php?app=goods"},
+                        "recommend_type":{"text":"推荐类型","url":"index.php?app=recommend"}
+                 }
+             },
+         "store":
+            {"text":"店铺","default":"store_manage","children":
+                {
+                    "sgrade":{"text":"店铺等级","url":"index.php?app=sgrade"},
+                    "scategory":{"text":"店铺分类","url":"index.php?app=scategory"},
+                    "store_manage":{"text":"店铺管理","url":"list.html"}
+                }
+            },
+         "user":
+            {"text":"会员","default":"user_manage","children":
+                {
+                    "user_manage":{"text":"会员管理","url":"index.php?app=user"},
+                    "admin_manage":{"text":"管理员管理","url":"index.php?app=admin"},
+                    "user_notice":{"text":"会员通知","url":"index.php?app=notice"}
+                }
+            },
+         "trade":
+            {"text":"交易","default":"order_manage","children":
+                {
+                    "order_manage":{"text":"订单管理","url":"index.php?app=order"}
+                }
+            },
+         "website":
+            {"text":"网站","default":"acategory","children":
+                {
+                    "acategory":{"text":"文章分类","url":"index.php?app=acategory"},
+                    "article":{"text":"文章管理","url":"index.php?app=article"},
+                    "partner":{"text":"合作伙伴","url":"index.php?app=partner"},
+                    "navigation":{"text":"页面导航","url":"index.php?app=navigation"},
+                    "db":{"text":"数据库","url":"index.php?app=db&amp;act=backup"},
+                    "groupbuy":{"text":"团购管理","url":"index.php?app=groupbuy"},
+                    "consulting":{"text":"咨询管理","url":"index.php?app=consulting"},
+                    "share_link":{"text":"分享链接","url":"index.php?app=share"}
+                }
+            },
+         "extend":
+            {"text":"扩展","default":"plugin","children":
+                {
+                    "plugin":{"text":"插件管理","url":"index.php?app=plugin"},
+                    "module":{"text":"模块管理","url":"index.php?app=module&act=manage"},
+                    "widget":{"text":"挂件管理","url":"index.php?app=widget"}
+                }
+            }
+         };
+</script>
+
+<script type="text/javascript" src="js/index.js" charset="gbk"></script>
+</head>
+<body>
+<div class="back_nav">
+    <div class="back_nav_list">
+            <dl>
+            <dt>设置</dt>
+                        <dd><a href="javascript:;" onclick="openItem('base_setting','setting');none_fn();">网站设置</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('region','setting');none_fn();">地区设置</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('payment','setting');none_fn();">支付方式</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('theme','setting');none_fn();">主题设置</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('template','setting');none_fn();">模板编辑</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('mailtemplate','setting');none_fn();">通知模板</a></dd>
+                    </dl>
+            <dl>
+            <dt>商品</dt>
+                        <dd><a href="javascript:;" onclick="openItem('gcategory','goods');none_fn();">分类管理</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('brand','goods');none_fn();">品牌管理</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('goods_manage','goods');none_fn();">商品管理</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('recommend_type','goods');none_fn();">推荐类型</a></dd>
+                    </dl>
+            <dl>
+            <dt>店铺</dt>
+                        <dd><a href="javascript:;" onclick="openItem('sgrade','store');none_fn();">店铺等级</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('scategory','store');none_fn();">店铺分类</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('store_manage','store');none_fn();">店铺管理</a></dd>
+                    </dl>
+            <dl>
+            <dt>会员</dt>
+                        <dd><a href="javascript:;" onclick="openItem('user_manage','user');none_fn();">会员管理</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('admin_manage','user');none_fn();">管理员管理</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('user_notice','user');none_fn();">会员通知</a></dd>
+                    </dl>
+            <dl>
+            <dt>交易</dt>
+                        <dd><a href="javascript:;" onclick="openItem('order_manage','trade');none_fn();">订单管理</a></dd>
+                    </dl>
+            <dl>
+            <dt>网站</dt>
+                        <dd><a href="javascript:;" onclick="openItem('acategory','website');none_fn();">文章分类</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('article','website');none_fn();">文章管理</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('partner','website');none_fn();">合作伙伴</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('navigation','website');none_fn();">页面导航</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('db','website');none_fn();">数据库</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('groupbuy','website');none_fn();">团购管理</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('consulting','website');none_fn();">咨询管理</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('share_link','website');none_fn();">分享链接</a></dd>
+                    </dl>
+            <dl>
+            <dt>扩展</dt>
+                        <dd><a href="javascript:;" onclick="openItem('plugin','extend');none_fn();">插件管理</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('module','extend');none_fn();">模块管理</a></dd>
+                        <dd><a href="javascript:;" onclick="openItem('widget','extend');none_fn();">挂件管理</a></dd>
+                    </dl>
+        </div>
+    <div class="shadow"></div>
+    <div class="close_float"><img src="images/close2.gif" /></div>
+</div>
+<div id="head">
+    <div id="logo"><a href="index.php"><img src="images/logo.gif" alt="ECMall" /></a></div>
+    <div id="menu"><span>您好，<strong>admin</strong> <a href="index.php?act=logout">[退出]</a> <a href="http://localhost/ecmall/index.php" target="_blank">[商城首页]</a></span>
+    <a href="javascript:;" class="menu_btn1" id="iframe_refresh">刷新</a>
+    <a href="javascript:;" class="menu_btn2" id="clear_cache">更新缓存</a>
+    <a href="#" id="back_btn"><img src="images/tiring_room_nav.gif" /></a>
+    </div>
+    <ul id="nav">
+    </ul>
+    <div id="headBg"></div>
+</div>
+<div id="content">
+    <div id="left">
+        <div id="leftMenus">
+            <dl id="submenu">
+                <dt><a class="ico1" id="submenuTitle" href="javascript:;"></a></dt>
+            </dl>
+            <dl id="history" class="history">
+                <dt>
+                    <a class="ico2" id="historyText" href="#">操作历史</a>
+                </dt>
+            </dl>
+         </div>
+    </div>
+    <div id="right">
+        <iframe frameborder="0" style="display:none;" width="100%" id="workspace"></iframe>
+    </div>
+</div>
+</body>
+</html>

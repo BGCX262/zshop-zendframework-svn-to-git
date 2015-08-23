@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>发送短消息</title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+//<!CDATA[
+var SITE_URL = "http://localhost/ecmall";
+//]]>
+</script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/admin.js" charset="utf-8"></script>
+<script type="text/javascript">
+	function login(){
+		var login = document.getElementById('login');
+		login.style.display = 'block';
+	}
+	function closed(){
+		var login = document.getElementById('login');
+		login.style.display = 'none';
+			
+	}
+
+	chkChange = function(obj){
+		checkobj = document.getElementsByName('check[]');
+		len = checkobj.length;
+		if(obj.checked == true){
+			for(i=0;i<len;i++){
+		        checkobj[i].checked = true;
+			}
+		}else{
+			for(i=0;i<len;i++){
+		        checkobj[i].checked = false;
+			}
+		}
+	}
+</script>
+<style>
+#login {display:none; position:absolute; backgound-color:#fff; z-index:30; border:2px solid #CC0;}
+</style>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+</head>
+
+<body>
+
+<div id="login">
+	<div class="mrightTop">
+  <div class="fontl">
+    <form method="get">
+       <div class="left">
+          <input type="hidden" name="app" value="store" />
+          <input type="hidden" name="act" value="index" />
+          <input type="hidden" name="wait_verify" value="" />
+	  所属等级:
+          <select class="querySelect" name="grade">
+            <option value="0">请选择...</option>
+	    <?php foreach($this->grade as $grade){ ?>
+            <option value="<?php echo $grade['id']; ?>"><?php echo $grade['grade_name']; ?></option>     
+	    <?php }?>
+	   </select>
+          &nbsp; &nbsp; &nbsp;会员名:
+          <input class="queryInput" type="text" name="user" value="" />
+          <input type="submit" class="formbtn" value="查询" />
+        全选 <input name="selectall" type="checkbox" onclick="chkChange(this)" />
+        <input type="button" onclick="closed()" value="关闭" />
+      </div>
+          </form>
+  </div>
+  <div class="fontr"> </div>
+</div>
+
+<form id="fm" action="<?php echo $this -> RootUrl(); ?>/admin/message/sendui" method="post" name="form" >
+<div class="tdare">
+  <div style="width:100%;">
+
+      <?php foreach($this->dataList as $data){ 
+      	  $this->br++;
+      	
+      	?> 
+      <div style="height:30px; width:142px;; float:left;">
+      <input type="checkbox" name="check[]" value="<?php echo $data['id'] ;?>"/>
+      <?php echo $data['user_name']; ?>
+      </div>
+     <?php
+     if($this->br%8 == 0){
+     	echo "<div style='clear:both;'></div>";
+     	echo "";
+     	
+     }
+		  }
+   	  ?>   
+
+  </div>
+		<div style='clear:both;'></div>
+    	<input type="submit" value="发送" style="width:80px;" />
+</div>
+
+</div>
+
+	<div id="rightTop">
+  <p>短消息</p>
+  <ul class="subnav">
+    <li><a class="btn1" onclick="login()">选择收件人</a></li>
+    <li><a class="btn1" href ="javascript:fm.submit()">发送给全部</a></li>
+  </ul>
+</div>
+
+<div class="info">
+
+    <table class="infoTable">
+      <tr>
+          <th></th>
+        <td class="paddingT15"><h2>请输入要发送的短消息信息</h2></td>
+      </tr>
+      <tr>
+        <th class="paddingT15">标题</th>
+        <td class="paddingT15 wordSpacing5"><input style="width:400px;" name="title" type="text" id="name" /></td>
+      </tr>
+      <tr>
+        <th class="paddingT15">短消息内容</th>
+        <td class="paddingT15 wordSpacing5"><textarea style="width:396px; height:200px; " name="content" ></textarea></td>
+      </tr>
+	   <tr>
+
+      </tr>
+      <tr>
+      <th></th>
+       	  <td class="ptb20"><input class="formbtn" type="button" name="Submit" onclick="login()" value="提交" />
+          <input class="formbtn" type="reset" name="Reset" value="重置" /></td>
+      </tr>
+    </table>
+</div>
+</form>
+<p id="page_footer">Copyright 2003-2009 ShopEx Inc.,All rights reserved.</p>
+</body>
+</html>

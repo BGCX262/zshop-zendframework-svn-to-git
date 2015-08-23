@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="<?php echo $this->RootUrl();?>/css/myorder.css" />
+<!--
+<script type="text/javascript" src="<?php echo $this->RootUrl();?>/js/tab.js" charset="utf-8"/>
+-->
+
+<style>
+	#test select{
+		width:100px;
+		margin-left:20px;
+	}
+  </style>
+  <script src="<?php echo $this -> RootUrl(); ?>/adminres/js/jquery-1[1].2.6.js" type="text/javascript"></script>
+  <script src="<?php echo $this -> RootUrl(); ?>/adminres/js/jquery.provincesCity.js" type="text/javascript"></script>
+  <script src="<?php echo $this -> RootUrl(); ?>/adminres/js/provincesdata.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+	function showDate(){
+		var obj,date,day;
+		obj = new Date();
+		date = obj.getFullYear() + "-";
+		date += (obj.getMonth()+1) + "-";
+		date += obj.getDate() + " ";
+		date += obj.getHours() + ":";
+		date += obj.getMinutes() + ":";
+		date += obj.getSeconds() + " ";
+		switch (obj.getDay()) {
+                case 0:
+                    date += "星期日";
+                    break;
+                case 1:
+                    date += "星期一";
+                    break;
+                case 2:
+                   date += "星期二";
+                    break;
+                case 3:
+                    date += "星期三";
+                    break;
+                case 4:
+                   date += "星期四";
+                    break;
+                case 5:
+                    date += "星期五";
+                    break;
+                case 6:
+                   date += "星期六";
+                    break;
+            }
+		document.getElementById("sj").innerHTML = date;
+	}
+	window.setInterval("showDate()",1000);
+	$(function(){
+		$("#test").ProvinceCity();
+	});
+
+</script>
+<title>myorder</title>
+</head>
+
+<body>
+<div id="welcome">
+	<div class="left">你好，欢迎来到源码商城！ [请登录] <a href="#">[免费注册]</a></div>
+    <div class="right">购物车 | 交易安全 | 帮助</div>
+</div>
+<!-- end welcome-->
+<div id="logo">
+	<div class="img"><img src="<?php echo $this->RootUrl();?>/images/loglo.jpg" /></div>
+    <div class="form">
+    <form method="get" action="" >
+    	<input type="text" name="search" />
+        <select name="catalog">
+        	<option value="0">所以分类</option>
+		<?php foreach($this->catalog as $cat){ ?>
+		<option value="0"><?php echo $cat['catname']; ?></option>
+		<?php } ?>
+        </select>
+        <input type="image" src="<?php echo $this->RootUrl();?>/images/search.jpg" class="image" />
+    </form>
+    </div>
+</div>
+<!-- end logo-->
+<div id="menu">
+	<ul>
+    	<li><a href="#">首页</a></li>
+        <li><a href="#">商品中心</a></li>
+        <li><a href="#">新闻中心</a></li>
+        <li><a href="#">商城活动</a></li>
+        <li><a href="#">品牌列表</a></li>
+        <li><a href="#">帮助中心</a></li>
+        <li><a href="#">发货通知</a></li>
+        <li><a href="#">在线留言</a></li>
+    </ul>
+	 <p> 您的购物车有0件商品  去结算</p>
+</div>
+<!-- end menu-->
+<div id="myshoping">
+	<div class="left"><font>我的商城</font> | <span id="sj"></span></div>
+    <div class="right"><p>亲爱的<font>XXX</font>,欢迎您来到源码商城</p></div>
+</div>
+<!-- end myshoping-->
+<div id="main">
+	<div id="main_left">
+		<div id="member">
+			<img src="<?php echo $this->RootUrl();?>/images/portrait.jpg" /> 
+			<p class="welcome">欢迎您</p><br />
+			<a href="#" class="name">XXX</a>
+			<p class="member">身份:普通会员</p>
+			<p class="member">累计积分:1218</p>
+		</div>
+		<div id="order">
+				<div class="title">订单/支付</div>
+				<div class="list"><a href="<?php echo $this->RootUrl();?>/order/index">我的订单</a></div>
+				<div class="list">订单支付历史</div>
+		</div>
+		<div id="account">
+			<div class="title">账户管理</div>
+			<div class="list"><a href="<?php echo $this->RootUrl();?>/delivery/index">收货地址薄</a></div>
+			<div class="list">账户余额</div>
+		</div>
+		<div id="personal">
+			<div class="title">个人信息管理</div>
+			<div class="list">修改会员信息</div>
+			<div class="list">修改密码</div>
+			<div class="list"><a href="javascript:drop_confirm('您确定要退出？', '<?php echo $this -> RootUrl(); ?>/member/logout/id/<?php echo $data['id']; ?>');">安全退出</a></div>
+		</div> 
+
+    </div>
+    <div id="main_right">
+	<form method="post" action="<?php echo $this->RootUrl();?>/orderdelivery/add" name="form">
+	<table border="1" id="table">
+		<th colspan="4"><center>收货人信息</center><th>
+		<tr class="tr">
+			<td>配送区域:</td>
+			<td colspan="3"><div id="test" ></div></td>
+		</tr>
+		<tr class="tr">
+			<td>收货人姓名:</td>
+			<td><input type="text" name="name"/>&nbsp;(*)</td>
+			<td>电子邮件地址:</td>
+			<td><input type="text" name="email"/>&nbsp;(*)</td>
+		</tr>
+		<tr class="tr">
+			<td>详细地址:</td>
+			<td><input type="text" name="address"/>&nbsp;(*)</td>
+			<td>邮政编码:</td>
+			<td><input type="text" name="code"/>&nbsp;(*)</td>
+		</tr>
+		<tr class="tr">
+			<td>电话:</td>
+			<td><input type="text" name="phone"/>&nbsp;(*)</td>
+			<td>手机:</td>
+			<td><input type="text" name="tel"/>&nbsp;(*)</td>
+		</tr>
+		<tr class="tr">
+			<td colspan="4"><center><input type="submit" value="新增收货地址" class="formbtn"/></center></td>
+		</tr>
+	</table>
+	</form>	
+    </div>
+</div>
+<!-- end main-->
+<div></div>
+<div id="clear"></div>
+<div id="foot">
+	<P>长沙源码计算机信息咨询有限公司 版权所有 &copy; 2012 湘ICP备1212121213号 | 0731-3743219</P>
+</div>
+</body>
+</html>

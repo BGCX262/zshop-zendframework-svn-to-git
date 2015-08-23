@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> ECMall </title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+//<!CDATA[
+var SITE_URL = "http://localhost/ecmall";
+//]]>
+</script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/admin.js" charset="utf-8"></script>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+<script charset="utf-8" type="text/javascript" src="js/inline_edit.js" ></script></head>
+<body><div id="rightTop">
+  <p>资讯</p>
+  <ul class="subnav">
+        <li><span>管理</span></li>
+        <li><a class="btn1" href="<?php echo $this -> RootUrl(); ?>/admin/information/add">添加</a></li>
+      </ul>
+</div>
+<div class="mrightTop">
+  <div class="fontl">
+    <form action="<?php echo $this -> RootUrl(); ?>/admin/information/index" method="get">
+       <div class="left">
+          <input type="hidden" name="app" value="store" />
+          <input type="hidden" name="act" value="index" />
+          <input type="hidden" name="wait_verify" value="" />
+          标题:
+          <input class="queryInput" type="text" name="title" value="" />
+          关键字:
+          <input class="queryInput" type="text" name="keyword" value="" />
+          
+          <input type="submit" class="formbtn" value="查询" />
+      </div>
+          </form>
+  </div>
+  <div class="fontr"> </div>
+</div>
+<div class="tdare">
+<form action="<?php echo $this -> RootUrl(); ?>/admin/message/del" method="post" name="form" >
+  <table width="100%" cellspacing="0" class="dataTable">
+     <tr class="tatr1" >
+      <td style="width:7%" class="firstCell"><input type="checkbox" class="checkall" /></td>
+      <td style="width:12%" >标题</td>
+      <td style="width:40%" >内容</td>
+      <td style="width:10%; text-align:center;" >发件人</td>
+      <td style="width:20%; text-align:center;" >发送时间</td>
+      <td style="width:12%; text-align:center;" >操作</td>
+    </tr>
+    <?php foreach ($this->date as $date) {?>
+    <tr class="tatr2">
+      <td class="firstCell"><input type="checkbox" name="check[]" class="checkitem" value="<?php echo $date['id']; ?>" /></td>
+      <td><?php echo $date['title']; ?></td>
+      <td><?php echo $date['content']; ?></td>
+      <td style="text-align:center;"><?php echo $date['author']; ?></td>
+      <td style="text-align:center;"><?php echo date("Y-m-d",$date['addtime']); ?></td>
+        <td style="text-align:center;">
+             <a href="<?php echo $this -> RootUrl(); ?>/admin/information/editinform?id=<?php echo $date['id']; ?>">编辑</a> | <a href="javascript:drop_confirm('您确定要删除所选文章的所有信息吗？', '<?php echo $this -> RootUrl(); ?>/admin/information/del?id=<?php echo $date['id']; ?>');">删除</a>
+        </td>
+    </tr>
+    <?php  }?>
+    <tr class="tar2">
+    	<td style="text-align: center;"><input type="submit" value="删除所选" /></td>
+	    <td colspan="5" style="text-align: center;">
+	    <?php
+	   include APPLICATION_PATH . '/admin/views/scripts/common/page.phtml';
+	    ?>
+	    </td>
+    </tr>
+   </table>
+	</form>
+  <div class="clear"></div>
+  
+</div>
+<p id="page_footer">Copyright 2003-2009 ShopEx Inc.,All rights reserved.</p>
+</body>
+</html>

@@ -1,0 +1,69 @@
+/*****公共******/
+*{font-size:12px; font-family:"宋体"; padding:0px; margin:0px;}
+/******外边框******/
+#shop{ width:970px; margin:auto; padding-bottom:90px; } 
+/*****topmx顶部部分*******/
+.topmx{ height:22px; background-color:#e4e4e4; padding-top:10px;}
+.logintop{ color:#3c3c3c; font-size:12px; margin-left:31px; float:left;}
+.logintop1{color:#3c3c3c; font-size:12px; height:14px; border-left:1px #3c3c3c solid; border-right:1px #3c3c3c solid; margin:0px 11px; padding:0px 11px;  float:right; }
+.logintop2{color:#3c3c3c; font-size:12px; float:right;}
+.logintop3{color:#3c3c3c; font-size:12px; margin-right:96px; float:right;}
+/*****top头部部分*******/
+#shop .top{ }
+#shop .logo{ margin-top:36px; width:313px; float:left; margin-left:28px;}
+#shop .logo1{width:93px; height:92px; float:left;}
+#shop .logo2{width:196px; height:46px; float:right; margin-left:23px; margin-top:30px;}
+#shop .help{ float:right; margin-top:100px;}
+#shop .text{ width:260px; height:27px; border:1px #c8c8c8 solid; float:left;}
+#shop .chancebox{ width:117px; height:29px; border:1px #c8c8c8 solid; font-size:14px; color:#c8c8c8; padding-bottom:5px; padding-left:20px; float:left;}
+#shop .submit{ background-image:url(../image/indexsubmit.gif); width:49px; height:27px; margin-left:8px; margin-bottom:8px;}
+/*****导航栏部分******/
+#shop .navigation{height:42px;}
+#shop .N1{ height:27px; width:44px; background-color:#3c3c3c; color:#FFF; padding-top:14px; padding-left:18px; float:left; }
+#shop .N1:hover{ background-color:#7c0217;}
+#shop .N2{ height:27px; width:70px; background-color:#3c3c3c; color:#FFF; padding-top:14px; padding-left:18px; margin-left:1px; float:left; }
+#shop .N2:hover{ background-color:#7c0217;}
+#shop .N3{ height:27px; width:126px; background-color:#3c3c3c; color:#FFF; padding-top:14px; padding-left:86px; margin-left:1px; float:left; }
+#shop .N4{ height:28px; width:54px; font-size:14px; background-color:#3c3c3c; color:#FFF; padding-top:13px; padding-left:18px; float:left; }
+#shop .F4{ font-size:14px; text-decoration:none; color:#FFF;}
+/*****中间部分******/
+#shop .center{ margin-top:19px;}
+#shop .L1{ width:712px; height:482px; border:1px #c7c7c7 solid; background-image:url(../image/L1.gif); background-repeat: no-repeat; float:left;}
+#shop .L2{ width:244px; float:right; margin:0xp;}
+#shop .L3{ width:244px; height:212px; background-color:#eaeaea; margin-top:6px; float:right;}
+#shop .N5{ width:67px; height:32px; border:0px; margin:0px; float:left;}
+#shop .N7{ width:64px; height:32px; border:0px; margin:0px; float:right;}
+#shop .N6{ width:70;px; height:32px; margin-left:2px; border:0px; margin-right:2px; float:left;}
+#shop .L3_1{ font-size:14px; color:#FFF;  border-right:#FFF 1px solid; height:14px; width:82px; margin-top:6px; text-align:center; float:left;}
+#shop .L3_2{ width:229px; height:25px; background-color:#3c3c3c; margin:8px 4px;}
+#shop .L3_3{ width:50px; color:#FFF; margin-top:8px; line-height:8px; float:right;}
+#shop .L3_4{}
+#shop .L3_4 li{ margin-top:10px; margin-left:26px; color:#3c3c3c;}
+#shop .L4{ width:244px; height:140px; border:#c8c8c8 1px solid; margin-top:8px; float:right;}
+#shop .L5{ width:244px; height:76px; border:#c8c8c8 1px solid; margin-top:6px; float:right;}
+#shop .L6{ width:204px; height:690px; border:#c8c8c8 2px solid; margin-top:28px; float:left;}
+#shop .L7{ width:751px; height:690px; border:#c8c8c8 2px solid; margin-top:28px; float:right;}
+#shop .L8{ width:966px; height:744px; border:#c8c8c8 2px solid;}
+#shop .L9{ width:966px; height:596px; border:#c8c8c8 2px solid; margin-top:28px;}
+#shop .L10{ width:966px; height:692px; border:#c8c8c8 2px solid; margin-top:28px;}
+#shop .L6_1{ height:21px; background-color:#3c3c3c; padding-top:6px;}
+#shop .L6_2{ font-size:14px; color:#FFF; margin-left:18px; margin-top:0px;}
+#shop .L6_3{ font-size:16px; color:#3b3b3b; margin-top:22px; margin-left:17px; font-weight:bolder; text-decoration:none; }
+#shop .L6_4{ margin-left:51px; color:#3c3c3c; }
+#shop .L6_4 dd{ margin-top:10px;}
+#shop .L7_1{ height:46px; background-image:url(../image/L7.gif);}
+#shop .L7_1_1{ font-size:30px; color:#7d0216; margin-left:17px; margin-top:9px; font-weight:bolder; float:left;}
+#shop .L7_1_2{ font-size:22px; font-weight:bolder; color:#FFF; margin-top:16px; margin-left:4px; float:left;}
+#shop .L7_1_3{ color:#7b0116; margin-top:24px; margin-right:8px; float:right;} 
+#shop .L7_2{ width:239px; height:422px; float:left;}
+#shop .L7_3{width:239px; height:422px; margin:0px 18px; float:left;}
+#shop .L7_4{ width:236px; height:422px; float:right;}
+#shop .L7_5{ height:201px; margin-top:16px;}
+#shop .L8_1{ width:663px; height:370px; float:left;}
+#shop .L8_2{ width:282px; height:370px; float:right;}
+#shop .L8_1
+#shop .L8_1
+#shop .L8_1
+/****底部部分****/
+#shop .bottom{ margin-top:44px;}
+#shop .a7{ text-align:center; margin-top:72px;}

@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> ECMall </title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/admin.js" charset="utf-8"></script>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+</head>
+<body>
+<div id="rightTop">
+  <p>分类管理</p>
+  <ul class="subnav">
+        <li><span></span></li>
+        <li><a class="btn1" href="<?php echo $this->RootUrl();?>/admin/goodscatalog/add">新增分类</a></li>
+ </ul>
+</div>
+
+<div class="tdare">
+  <table width="100%" cellspacing="0" class="dataTable">
+      <tr class="tatr1">
+          <td style="width:8%" class="firstCell">分类ID</td>
+          <td style="width:30%">分类名称</td>
+          <td style="width:20%">描述</td>
+          <td style="width:6%;text-align:center;">显示</td>
+          <td style="width:6%;text-align:center;">排序</td>
+          <td style="width:8%" class="handler">操作</td>
+     </tr>
+	<?php foreach($this->catalog as $cat){ ?>
+     <tr class="tatr2">
+      <td class="firstCell">&nbsp;<?php echo $cat['id']; ?></td>
+      <td><?php 
+              $blank='';
+              for($i=0;$i<$cat['depth'];$i++){
+                  $blank = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . $blank;
+              }
+              echo $blank . $this ->escape($cat['catname']); 
+           ?></td>
+      <td><?php echo $this ->escape($cat['description']);?></td>
+      <td style="text-align:center;"><img src="<?php echo $this->rootUrl() . '/adminres/images/'; echo $cat['display']?'yes.gif' : 'no.gif'; ?>" /></td>
+      <td style="text-align:center;"><?php echo $cat['order']; ?></td>
+      <td style="text-align:center;">
+        <a href="<?php echo $this -> RootUrl(); ?>/admin/goodscatalog/edit/id/<?php echo $cat['id']; ?>">编辑</a> | 
+        <a href="javascript:drop_confirm('您确定要删除该商品分类？', '<?php echo $this -> RootUrl(); ?>/admin/goodscatalog/delete/id/<?php echo $cat['id']; ?>');">删除</a> 
+      </td>
+    </tr>
+    <?php } ?>
+   </table>
+  <div class="clear"></div>  
+</div>
+<p id="page_footer">&copy;.&copy;。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。&copy;.&copy;</p>
+</body>
+</html>

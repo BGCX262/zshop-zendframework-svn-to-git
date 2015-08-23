@@ -1,0 +1,35 @@
+/*****公共******/
+*{font-size:12px; font-family:"宋体"; padding:0px; margin:0px;}
+/******外边框******/
+#shop{ width:970px; margin:auto; border:1px #000 solid;} 
+/*****topmx顶部部分*******/
+.topmx{ height:22px; background-color:#e4e4e4; padding-top:10px;}
+.logintop{ color:#3c3c3c; font-size:12px; margin-left:31px; float:left;}
+.logintop1{color:#3c3c3c; font-size:12px; height:14px; border-left:1px #3c3c3c solid; border-right:1px #3c3c3c solid; margin:0px 11px; padding:0px 11px;  float:right; }
+.logintop2{color:#3c3c3c; font-size:12px; float:right;}
+.logintop3{color:#3c3c3c; font-size:12px; margin-right:96px; float:right;}
+/*****top头部部分*******/
+#shop .top{ }
+#shop .logo{ margin-top:36px; width:313px; float:left; margin-left:28px;}
+#shop .logo1{width:93px; height:92px; float:left;}
+#shop .logo2{width:196px; height:46px; float:right; margin-left:23px; margin-top:30px;}
+#shop .help{ float:right; margin-top:100px;}
+#shop .text{ width:260px; height:27px; border:1px #c8c8c8 solid; float:left;}
+#shop .chancebox{ width:117px; height:29px; border:1px #c8c8c8 solid; font-size:14px; color:#c8c8c8; padding-bottom:5px; padding-left:20px; float:left;}
+#shop .submit{ background-image:url(../image/indexsubmit.gif); width:49px; height:27px; margin-left:8px; margin-bottom:8px;}
+/*****导航栏部分******/
+#shop .navigation{height:42px;}
+#shop .N1{ height:27px; width:44px; background-color:#3c3c3c; color:#FFF; padding-top:14px; padding-left:18px; float:left; }
+#shop .N1:hover{ background-color:#7c0217;}
+#shop .N2{ height:27px; width:70px; background-color:#3c3c3c; color:#FFF; padding-top:14px; padding-left:18px; margin-left:1px; float:left; }
+#shop .N2:hover{ background-color:#7c0217;}
+#shop .N3{ height:27px; width:126px; background-color:#3c3c3c; color:#FFF; padding-top:14px; padding-left:86px; margin-left:1px; float:left; }
+#shop .N4{ height:28px; width:54px; font-size:14px; background-color:#3c3c3c; color:#FFF; padding-top:13px; padding-left:18px; float:left; }
+#shop .F4{ font-size:14px; text-decoration:none; color:#FFF;}
+/*****中间部分******/
+#shop .center{ margin-top:19px;}
+#shop .L1{ width:712px; height:482px; border:1px #c7c7c7 solid; background-image:url(../image/L1.gif); background-repeat: no-repeat;}
+
+/****底部部分****/
+#shop .bottom{ padding-bottom:134px;}
+#shop .a7{ text-align:center; margin-top:102px;}

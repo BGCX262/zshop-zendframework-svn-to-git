@@ -1,0 +1,39 @@
+/*****公共******/
+*{font-size:12px; font-family:"宋体"; padding:0px; margin:0px;}
+/******外边框******/
+#shop{width:912px; margin:auto; background-color:#FFF;} 
+/******头部********/
+#shop .top{ height:175px; }
+#shop .logo{ margin-top:68px; width:313px; float:left;}
+#shop .logo1{width:93px; height:92px; float:left;}
+#shop .logo2{width:196px; height:46px; float:right; margin-left:23px; margin-top:30px;}
+#shop .help{width:112px; height:29px; margin-right:60px; float:right; margin-top:138px;}
+#shop .vip{ margin-top:8px; margin-left:15px; width:58px; font-size:14px; color:#000; margin-bottom:10px;  text-decoration:none;  float:left;}
+#shop .image{ float:left;}
+/****分割线*****/
+#shop .line{width:910px; margin-top:0px;}
+/*****中间注册部分******/
+#shop .center{ }
+#shop .back{ width:532px; height:506px; background-color:#e6e6e6; margin-top:78px; margin-left:212px; position:absolute; z-index:1;}
+#shop .login{ width:504px; height:478px; background-color:#e6e6e6; margin-top:39px; margin-left:224px;  border:1px #FFF solid; position:relative; z-index:2; }
+#shop .viplogo{height:auto; margin-left:204px; margin-top:74px;}
+#shop .vfont{ font-size:22px; color:#000; float:left; margin:0px 20px;}
+#shop .vfont2{ font-size:14px; color:#000; margin-top:16px; margin-left:310px;}
+#shop .a1{ float:left; margin-top:2px;}
+#shop .a2{ margin-top:2px;}
+#shop .a3{ color:#3c3c3c; font-size:14px; margin-top:8px; margin-right:24px; float:left;}
+#shop .a4{ color:#3c3c3c; font-size:14px; margin-top:30px; margin-left:48px;  float:left;}
+#shop .a5{ color:#3c3c3c; font-size:14px; margin-top:30px; margin-left:60px;  float:left;}
+#shop .password{ width:260px; height:29px; margin-top:24px; margin-left:24px; background-color:#e6e6e6; border:1px solid #919191; line-height:30px; color:#000; font-size:14px; }
+#shop .yanzheng{ width:260px; height:29px; margin-top:24px; margin-left:26px; background-color:#e6e6e6; border:1px solid #919191; line-height:30px; color:#000; font-size:14px; }
+#shop .username{width:260px; height:29px; background-color:#e6e6e6; border:1px solid #919191; line-height:30px; color:#000; font-size:14px; }
+#shop .login2{ margin-top:24px; margin-left:60px;}
+#shop .submit{ background:url(../image/sub3.gif); width:135px; height:38px; margin-left:185px; margin-top:40px;}
+#shop .forget{color:#FFF; font-size:14px; margin-top:78px; margin-right:176px; float:right;}
+#shop .yanzhengimage{ width:199px; height:45px; margin-top:32px; margin-left:180px; float:left;}
+#shop .a6{ color:#000; margin-top:32px; margin-bottom:16px;}
+#shop .box{ margin-left:44px; margin-top:22px; margin-right:14px; float:left;}
+#shop .a8{ margin-top:23px; color:#3c3c3c;}
+/****底部部分****/
+#shop .bottom{ padding-bottom:134px;}
+#shop .a7{ text-align:center; margin-top:102px;}

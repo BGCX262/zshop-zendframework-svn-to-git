@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> ECMall </title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/admin.js" charset="utf-8"></script>
+<style type="text/css">
+<!--
+body {background: #fcfdff;}
+-->
+</style>
+</head>
+<body><div id="rightTop">
+  <ul class="subnav">
+        <li><span>评论详情</span></li>
+        <li><a class="btn1" href="<?php echo $this->RootUrl();?>/admin/comment/index">用户评论</a></li>
+      </ul>
+</div>
+<div class="tdare">
+<form action="<?php echo $this -> RootUrl(); ?>/admin/email/send-form" method="post" name="form" >
+<table width="100%" cellspacing="0" class="dataTable">
+    <tr class="tatr1">
+    <td></td>
+      <td colspan="2"><font color="#264D84"><?php echo $this->data[0]['user_name'];?></font> 在  <?php echo date("Y-m-d H:i:s",$this->data[0]['add_time']);?> 对 <font color="#264D84" ><?php echo $this->data[0]['goods_name'];?></font> 发表了评论</td>
+    </tr>
+    <tr class="tatr1">
+    <td>咨询内容:</td>
+      <td colspan="2"><?php echo $this->data[0]['content'];?></td>
+    </tr>
+    <tr class="tatr1">
+    <td></td>
+      <td style="width:10%">用户名:</td>
+      <td><input type="text" name="name" value="<?php echo $this->data[0]['user_name'];?>"/></td>
+    </tr>
+    <tr class="tatr1">
+    <td></td>
+      <td style="width:10%">Email:</td>
+      <td><input type="text" name="to" value="<?php echo $this->data[0]['email'];?>"/>++--邮件通知--++</td>
+    </tr>
+    <tr class="tatr1">
+    <td><input type="hidden" name="title" value="商品评论回复"/></td>
+    <td style="width:10%">回复内容:</td>
+      <td><textarea cols="40" rows="10" name="content"></textarea></td>
+    </tr>
+    <tr class="tatr1">
+      <td colspan="3"><center><input type="submit" name="submit" value="确定" class="formbtn"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="重置" name="reset" class="formbtn"/></center></td>
+    </tr>
+      </table>
+ </form>
+  <div class="clear"></div>  
+</div>
+<p id="page_footer">&copy;.&copy;。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。&copy;.&copy;</p>
+</body>
+</html>

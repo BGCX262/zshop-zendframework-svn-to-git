@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> ECMall </title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/admin.js" charset="utf-8"></script>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+</head>
+<body><div id="rightTop">
+  <p>支付方式</p>
+  <ul class="subnav">
+        <li><span>管理</span></li>
+      </ul>
+</div>
+</div>
+<div class="tdare">
+<form action="<?php echo $this -> RootUrl(); ?>/admin/payment/switch" method="post" name="form" >
+  <table width="100%" cellspacing="0" class="dataTable">
+        <tr class="tatr1">
+      <td width="100" class="firstCell">支付方式名称</td>
+      <td>支付方式描述</td>
+	<td class="handler">操作</td>
+    </tr>
+    <?php foreach($this->datalist as $data){ ?>
+            <tr class="tatr2">
+      <td> <?php echo $data['name']; ?> <input type="hidden" name="id" value="<?php echo $data['id'] ;?>" /></td>
+      <td><?php echo $data['description']; ?></td>
+            <td class="handler">
+	    <a href="<?php echo $this -> RootUrl(); ?>/admin/payment/switch/id/<?php echo $data['id'] ;?>"><?php if($data['switch'] == 1){echo "停用";}else{echo "启用";} ?></a>
+        </td>
+    </tr> 
+    <?php }?>
+      </table>
+      </form>
+  <div class="clear"></div>  
+</div>
+<p id="page_footer">&copy;.&copy;。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。&copy;.&copy;</p>
+</body>
+</html>

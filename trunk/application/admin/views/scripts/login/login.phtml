@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<style>
+*{margin:0;padding:0;font:Verdana, '宋体'}
+#login{background-color:#0676C8;width:532px;height:300px;margin:80px auto;}
+#top{height:100px;color:white;text-align:center;font-size:24px;line-height:100px;}
+#username,#password{height:30px;margin-bottom:30px;}
+.label{padding:0 5px 0 100px;font-size:14px;color:white;font-weight:bold;}
+input{height:25px;width:250px;}
+#sub input{width:100px;color:#0676C8;font-size:14px;}
+#sub {text-align:center;}
+</style>
+<title>登陆</title>
+</head>
+<body>
+<div id="login">
+    <div id="top">ZSHOP管理登录</div>
+    <form action="<?php echo $this->url(array('module'=>'admin','controller'=>'login','action'=>'login'));?>" method="post">
+    <div id="username"><span class="label">用&nbsp;&nbsp;户：</span><input name="user" type="text"  class="username" /></div>
+    <div id="password"><span class="label">密&nbsp;&nbsp;码：</span><input name="pass" type="password"  class="password" /></div>
+    <div id="sub"><input type="submit" value="登录"  /></div>
+	</form>
+</div>
+ 
+</body>
+</html>

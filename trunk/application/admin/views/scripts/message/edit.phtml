@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>发送短消息</title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+//<!CDATA[
+var SITE_URL = "http://localhost/ecmall";
+//]]>
+</script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/admin.js" charset="utf-8"></script>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+</head>
+<body><div id="rightTop">
+  <p>短消息</p>
+  <ul class="subnav">
+    <li><a class="btn1" href="index.php?app=store">选择收件人</a></li>
+  </ul>
+</div>
+<div class="info">
+  <form method="post" enctype="multipart/form-data" id="test_form" action="user_insert.php">
+    <table class="infoTable">
+      <tr>
+          <th></th>
+        <td class="paddingT15"><h2>请输入要发送的短消息信息</h2></td>
+      </tr>
+      <tr>
+        <th class="paddingT15">标题</th>
+        <td class="paddingT15 wordSpacing5"><input style="width:400px;" name="title" type="text" id="name" value="<?php echo $this->val[0]['title']; ?>" /></td>
+      </tr>
+      <tr>
+        <th class="paddingT15">短消息内容</th>
+        <td class="paddingT15 wordSpacing5"><textarea style="width:396px; height:200px; " name="content" ><?php echo $this->val[0]['content']; ?></textarea></td>
+      </tr>
+	   <tr>
+
+      </tr>
+      <tr>
+        <th></th>
+        <td class="ptb20"><input class="formbtn" type="submit" name="Submit" value="提交" />
+          <input class="formbtn" type="reset" name="Reset" value="重置" /></td>
+      </tr>
+    </table>
+  </form>
+</div>
+<p id="page_footer">Copyright 2003-2009 ShopEx Inc.,All rights reserved.</p>
+</body>
+</html>

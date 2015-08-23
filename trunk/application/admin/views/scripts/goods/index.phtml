@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> ECMall </title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/admin.js" charset="utf-8"></script>
+<script type="text/javascript">
+
+//改变全或选全不选状态
+chkChange = function(obj, checkboxName){
+	checkobj = document.getElementsByName(checkboxName);
+	len = checkobj.length;
+	if(obj.checked == true){
+		for(i=0; i<len; i++){
+	        checkobj[i].checked = true;
+		}
+	}else{
+		for(i=0; i<len; i++){
+	        checkobj[i].checked = false;
+		}
+	}
+}
+
+//检查checkbox是否选中
+function haveChecked(checkboxName){
+	checkobj = document.getElementsByName(checkboxName);
+	len = checkobj.length;
+	for(i=0; i<len; i++){
+		if(checkobj[i].checked == true){
+		    return true;
+		    break;
+		}
+	}
+	return false;
+}
+
+//商品批量操作提交
+function batchProcess(obj){
+	if(haveChecked('check[]')){
+	    if(obj.value != ''){
+    	    $("#goodlist").attr("action", obj.value);
+    	    $("#goodlist").submit();
+	    }
+	}else{
+	    alert('未选择商品');
+	}
+}
+</script>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+</head>
+<body>
+<div id="rightTop">
+  <p>商品管理</p>
+  <ul class="subnav">
+        <li><span></span></li>
+        <li><a class="btn1" href="<?php echo $this->Url(array('action' => 'add'));?>">添加商品</a></li>
+ </ul>
+</div>
+<div class="mrightTop">
+  <div class="fontl">
+    <form name="search" method="get" action="<?php echo $this -> url(array('module'=>'admin','controller'=>'goods','action'=>'index','search' => 'do', 'page' => 1), null, true, true); ?>">
+       <div class="left">
+       <!-- 分类 -->
+       <select name="catid" style="width:150px">
+          <option value="all">所有分类</option>
+          <?php 
+              foreach($this -> catArray as $catDetail){
+                  $blank ='';
+                  for($i=0;$i<$catDetail['depth'];$i++){
+                      $blank = $blank . '&nbsp;&nbsp;&nbsp;&nbsp';
+                  }
+                  if($catDetail['id'] == $this -> catId){
+                      echo "<option value='{$catDetail['id']}' selected>{$blank}{$this -> escape($catDetail['catname'])}</option>";
+                  }else{
+                      echo "<option value='{$catDetail['id']}'>{$blank}{$this -> escape($catDetail['catname'])}</option>";
+                  }
+              }
+          ?>
+        </select>&nbsp;&nbsp;&nbsp;&nbsp;
+        <!-- 品牌 -->
+        <select name="goods_brand" style="width:130px;">
+        <option value="all">所有品牌</option>
+        <?php foreach($this -> goodsBrand as $brand){ ?>
+        	<option value=<?php echo '"' .$brand -> id . '"'; if($brand -> id == $this -> brandId){echo ' selected';}?>><?php echo $this->escape($brand -> brand_name);?></option>
+        <?php }?>
+        </select>
+        <!-- 推荐 -->
+        &nbsp;&nbsp;是否推荐：
+        <select name="recommend">
+        <option value="all">所有商品</option>
+        <option value="1" <?php if($this -> recommend == 1){echo ' selected';}?>>推荐商品</option>
+        </select>
+        <!-- 上架 -->
+        &nbsp;&nbsp;是否上架：
+        <select name="onsale">
+        <option value="all">所有商品</option>
+        <option value="1" <?php if($this -> onsale == 1){echo ' selected';}?>>上架商品</option>
+        <option value="0" <?php if($this -> onsale === '0'){echo ' selected';}?>>下架商品</option>
+        </select>
+        &nbsp; &nbsp; &nbsp;商品名称:
+        <input class="queryInput" type="text" name="goods_name" value="<?php echo $this -> goodsName;?>" />
+        <input type="submit" class="formbtn" value="查询" />
+      </div>
+    </form>
+  </div>
+  <div class="fontr"> </div>
+</div>
+<div class="tdare">
+  <form name='goodlist' id='goodlist' action="" method="post">
+  <table width="100%" cellspacing="0" class="dataTable">
+      <tr class="tatr1">
+          <td style="width:8%" class="firstCell"><input name="selectall" type="checkbox" onclick="chkChange(this, 'check[]')" />全选</td>
+          <td style="width:25%;align:center;">商品名称</td>
+          <td style="width:8%">价格</td>
+          <td style="width:6%;text-align:center;">上架</td>
+          <td style="width:6%;text-align:center;">推荐</td>
+          <td style="width:10%;text-align:center;">库存</td>
+          <td style="width:12%" class="handler">操作</td>
+     </tr>
+	<?php foreach($this->goodsList as $goods){ ?>
+     <tr class="tatr2">
+      <td class="firstCell"><input name="check[]" value="<?php echo $goods->id; ?>" type="checkbox" />&nbsp;<?php echo $goods->id; ?></td>
+      <td><?php echo $this ->escape($goods->goods_name);?></td>
+      <td><?php echo $goods->shop_price;?></td>
+      <td style="text-align:center;"><img src="<?php echo $this->rootUrl() . '/adminres/images/'; echo $goods->is_on_sale ?'yes.gif' : 'no.gif'; ?>" /></td>
+      <td style="text-align:center;"><img src="<?php echo $this->rootUrl() . '/adminres/images/'; echo $goods->recommend ?'yes.gif' : 'no.gif'; ?>" /></td>
+      <td style="text-align:center;"><?php echo $goods->stock ==-1 ? '忽略' : $goods->stock;?></td>
+      <td style="text-align:center;">
+        <a href="<?php echo $this -> Url(array('action' => 'edit')); ?>/id/<?php echo $goods->id; ?>">编辑</a> | 
+        <a href="javascript:drop_confirm('您确定要删除该商品？', '<?php echo $this -> Url(array('action' => 'delete')); ?>/id/<?php echo $goods->id; ?>');">删除</a> 
+      </td>
+    </tr>
+    <?php } ?>
+    <tr class="tar2">
+     <td style="text-align: center;">
+         <select onchange="batchProcess(this)">
+           <option value="">批量操作</option>
+           <option value=<?php echo $this->url(array('action' => 'recommend'));?>>推荐所选</option>
+           <option value=<?php echo $this->url(array('action' => 'unrecommend'));?>>取消推荐</option>
+           <option value=<?php echo $this->url(array('action' => 'sale'));?>>上架所选</option>
+           <option value=<?php echo $this->url(array('action' => 'outsale'));?>>下架所选</option>
+           <option value=<?php echo $this->url(array('action' => 'delete'));?>>删除所选</option>
+         </select>
+     </td>
+     <td colspan="6" style="text-align: center;"><?php include APPLICATION_PATH . '/admin/views/scripts/common/page.phtml';?></td>
+    </tr>
+   </table>
+   </form>
+  <div class="clear"></div>  
+</div>
+<p id="page_footer">&copy;.&copy;。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。&copy;.&copy;</p>
+</body>
+</html>

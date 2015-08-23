@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> ECMall </title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+//<!CDATA[
+var SITE_URL = "http://localhost/ecmall";
+//]]>
+</script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/admin.js" charset="utf-8"></script>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+</head>
+<body><div id="rightTop">
+  <p>会员</p>
+  <ul class="subnav">
+        <li><span>管理</span></li>
+        <li><a class="btn1" href="<?php echo $this->RootUrl();?>/admin/grade/add">新增会员组</a></li>
+      </ul>
+</div>
+<div class="tdare">
+  <table width="100%" cellspacing="0" class="dataTable">
+    <tr class="tatr1">
+    <td class="firstCell"></td>
+      <td>等级名称</td>
+      <td><span ectype="order_by" fieldname="store_name">积分下限</span></td>
+      <td><span ectype="order_by" fieldname="region_id">积分上限</span></td>
+      <td><span ectype="order_by" fieldname="sgrade">折扣</span></td>
+      <td class="handler">操作</td>
+    </tr>
+	<?php foreach($this->dataList as $data){ ?>
+            <tr class="tatr2">
+	      <td class="firstCell"></td>
+	      <td><?php echo $data['grade_name']; ?></td>
+	      <td><?php echo $data['min_point']; ?></td>
+	      <td><?php echo $data['max_point']; ?></td>
+	      <td><?php echo $data['discount']; ?></td>
+            <td class="handler">
+                <a href="<?php echo $this -> RootUrl(); ?>/admin/grade/update/id/<?php echo $data['id']; ?>'">编辑</a> | <a href="javascript:drop_confirm('您确定要删除改会员组？', '<?php echo $this -> RootUrl(); ?>/admin/grade/delete/id/<?php echo $data['id']; ?>');">删除</a> 
+        </td>
+    </tr>
+    <?php } ?>
+      </table>
+  <div class="clear"></div>  
+</div>
+<p id="page_footer">&copy;.&copy;。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。&copy;.&copy;</p>
+</body>
+</html>

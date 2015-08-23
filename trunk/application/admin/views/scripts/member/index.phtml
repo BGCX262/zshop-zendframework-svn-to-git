@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> ECMall </title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+	function checkall(){
+		if(document.form.check.checked){
+			var check = document.getElementsByName('checked[]');
+			for(var i=0;i<check.length;i++){
+				
+				check[i].checked = true;
+			}
+		}else{
+			var check = document.getElementsByName('checked[]');
+			for(var i=0;i<check.length;i++){
+				
+				check[i].checked = false;
+			}
+		}
+	}
+</script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/admin.js" charset="utf-8"></script>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+</head>
+<body><div id="rightTop">
+  <p>会员</p>
+  <ul class="subnav">
+        <li><span>管理</span></li>
+        <li><a class="btn1" href="<?php echo $this->RootUrl();?>/admin/member/add">新增会员</a></li>
+      </ul>
+</div>
+<div class="mrightTop">
+  <div class="fontl">
+    <form method="get">
+       <div class="left">
+          <input type="hidden" name="app" value="store" />
+          <input type="hidden" name="act" value="index" />
+          <input type="hidden" name="wait_verify" value="" />
+	  所属等级:
+          <select class="querySelect" name="grade">
+            <option value="0">请选择...</option>
+	    <?php foreach($this->grade as $grade){ ?>
+            <option value="<?php echo $grade['id']; ?>"><?php echo $grade['grade_name']; ?></option>     
+	    <?php }?>
+	   </select>
+          &nbsp; &nbsp; &nbsp;会员名:
+          <input class="queryInput" type="text" name="user" value="" />
+          <input type="submit" class="formbtn" value="查询" />
+      </div>
+          </form>
+  </div>
+  <div class="fontr"> </div>
+</div>
+<div class="tdare">
+<form action="<?php echo $this -> RootUrl(); ?>/admin/member/delete" method="post" name="form" >
+  <table width="100%" cellspacing="0" class="dataTable">
+        <tr class="tatr1">
+      <td width="20" class="firstCell"><input type="checkbox" name="check" onclick='checkall(this)'/></td>
+      <td>会员名称</td>
+      <td><span ectype="order_by" fieldname="store_name">性别</span></td>
+      <td><span ectype="order_by" fieldname="sgrade">所属等级</span></td>
+      <td class="table-center"><span ectype="order_by" fieldname="add_time">电话</span></td>
+      <td class="table-center"><span ectype="order_by" fieldname="state">积分</span></td>
+	<td class="handler">操作</td>
+    </tr>
+	<?php foreach($this->dataList as $data){ ?>
+            <tr class="tatr2">
+      <td class="firstCell"><input type="checkbox" name="checked[]" value="<?php echo $data['id'] ;?>"/></td>
+      <td><?php echo $data['user_name']; ?></td>
+      <td>
+      <?php if($data['sex'] == 0){echo "男";}else{echo "女";}?>
+      </td>
+      <td><?php echo $data['grade_name']; ?></td>
+      <td class="table-center"><?php echo $data['phone']; ?></td>
+      <td class="table-center"><?php echo $data['point']; ?></td>
+            <td class="handler">
+                <a href="<?php echo $this -> RootUrl(); ?>/admin/member/update/id/<?php echo $data['id']; ?>'">编辑</a> | <a href="javascript:drop_confirm('您确定要删除改会员？', '<?php echo $this -> RootUrl(); ?>/admin/member/delete/id/<?php echo $data['id']; ?>');">删除</a> 
+        </td>
+    </tr>
+    <?php } 
+    ?>
+    
+    <tr class="tar2"><td style="text-align: center;"><input type="submit" value="删除所选" /></td><td colspan="5" style="text-align: center;"><?php include APPLICATION_PATH . '/admin/views/scripts/common/page.phtml';?></td></tr>
+      </table>
+      </form>
+  <div class="clear"></div>  
+</div>
+<p id="page_footer">&copy;.&copy;。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。&copy;.&copy;</p>
+</body>
+</html>

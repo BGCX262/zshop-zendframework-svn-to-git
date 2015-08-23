@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="<?php echo $this->rooturl();?>/adminres/css/logincss.css" rel="stylesheet" type="text/css">
+<title>登陆</title>
+</head>
+<body>
+ 	<!--外边框开始-->
+	<div id="shop">
+    	<!--头部开始-->
+	  <div class="top">
+		  <div class="logo">
+       	        <div class="logo1">
+               	    <img src="<?php echo $this->rooturl();?>/adminres/images/logo1.gif" />
+                </div>
+            	<div class="logo2">
+                	<img src="<?php echo $this->rooturl();?>/adminres/images/logo2.gif" />
+                </div>
+          </div>   
+            
+         <div class="help">
+             <div  class="<?php echo $this->rooturl();?>/adminres/images"><img src="<?php echo $this->rooturl();?>/adminres/images/help.gif" /></div>
+             <a href="#" class="vip">登陆帮助</a>
+         </div>                 
+      </div>
+      <div style="clear:both;"></div>       
+   <!--头部结束-->
+   <!--分割线-->
+	  <div class="line"><img src="<?php echo $this->rooturl();?>/adminres/images/line.gif" /></div>
+    <!--中间会员登陆部分开始-->    
+      <div class="center">
+      		 <div class="back"></div>
+         	 <div class="login"> 
+            		<div class="viplogo">
+                    	<img src="<?php echo $this->rooturl();?>/adminres/images/+.gif" class="a1">
+                        <div class="vfont">会员登录</div>
+                        <img src="<?php echo $this->rooturl();?>/adminres/images/+.gif" class="a2">
+                    </div>
+                    <div style="clear:both;"></div> 
+                    <!--form表单开始-->
+                    <form action="<?php echo $this->url(array('module'=>'admin','controller'=>'login','action'=>'login'));?>" method="post">
+                    <div class="login2">
+                    	<div class="a3">Email地址或昵称：</div><input name="user" type="text"  class="username" />
+                        <div class="a4">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</div><input name="pass" type="password"  class="password" />
+                    </div>
+                    <div>
+                    	<input type="submit" value="" class="submit" />
+                        <div class="forget">忘记密码？</div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    </form>
+                    <!--form表单结束-->
+                    <div class="remind">
+                    	<div class="a5">还不是源码商城用户？</div>
+                        <div class="a6">快捷方便的免费注册，让你立即尽享源码商城提供的各项优惠及服务</div>
+                        <input type="submit" value="" class="submit2">
+                    </div>
+          	 </div>
+      </div>
+        <!--中间会员登录部分结束-->
+        <!--底部部分开始-->
+        <div class="bottom">
+        	<div class="a7">长沙源码计算机信息咨询有限公司 版权所有 2010 湘ICP备12182769号 | 联系电话：0731-82259438</div>
+        </div>
+        <!--底部部分结束-->
+	</div>   
+    <!--外边框结束-->	
+</body>
+</html>

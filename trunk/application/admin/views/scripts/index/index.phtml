@@ -1,0 +1,271 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=gbk" />
+<meta http-equiv="Content-Type" content="text/html;charset=gbk" />
+<title>Zshop后台</title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/ecmall.js" charset="utf-8"></script>
+
+<style type="text/css" media="print">
+.noprint{display : none }
+</style>
+<script type=text/javascript>
+var rooturl = '<?php echo $this -> RootUrl(); ?>';
+
+var menu = {
+	"dashboard" : {
+			"text" : "控制台",
+			"subtext" : "常用操作",
+			"default" : "goods_manage",
+			"children" : {
+				"goods_manage" : {
+					"text" : "商品列表",
+					"url" : rooturl + "/admin/goods/index"
+				},
+				"info_manage" : {
+					"text" : "咨询列表",
+					"url" : rooturl + "/admin/consult/index"
+				},
+				"order_manage" : {
+					"text" : "订单列表",
+					"url" : rooturl + "/admin/order/index"
+				},
+				"member_manage" : {
+					"text" : "会员列表",
+					"url" : rooturl + "/admin/member/index"
+				}
+			}
+		},
+		"goods" : {
+			"text" : "商品",
+			"default" : "goods_manage",
+			"children" : {
+				"goods_manage" : {
+					"text" : "商品管理",
+					"url" : rooturl + "/admin/goods/index"
+				},
+				"goods_add" : {
+					"text" : "商品添加",
+					"url" : rooturl + "/admin/goods/add"
+				},
+				"goodscat_manage" : {
+					"text" : "商品分类管理",
+					"url" : rooturl + "/admin/goodscatalog/index"
+				},
+				"goodstype_manage" : {
+					"text" : "商品类型管理",
+					"url" : rooturl + "/admin/goodstype/index"
+				},
+				"goodsbrand_manage" : {
+					"text" : "商品品牌管理",
+					"url" : rooturl + "/admin/goodsbrand/index"
+				},
+				"goodstype_comment" : {
+					"text" : "用户评论",
+					"url" : rooturl + "/admin/comment/index"
+				}
+			}
+	},
+	"member" : {
+		"text" : "会员",
+		"default" : "member_manage",
+		"children" : {
+			"member_manage" : {
+				"text" : "会员列表",
+				"url" : rooturl + "/admin/member/index"
+			},
+			"member_insert" : {
+				"text" : "会员添加",
+				"url" : rooturl + "/admin/member/add"
+			},
+			"member_group" : {
+				"text" : "会员等级",
+				"url" : rooturl + "/admin/grade/index"
+			}
+		}
+	},
+	"order" : {
+		"text" : "订单",
+		"default" : "order_manage",
+		"children" : {
+			"order_manage" : {
+				"text" : "订单列表",
+				"url" : rooturl + "/admin/order/index"
+			},
+			"order_insert" : {
+				"text" : "订单添加",
+				"url" : rooturl + "/admin/order/add"
+			},
+			"order_search" : {
+				"text" : "订单查询",
+				"url" : rooturl + "/admin/order/search"
+			},
+			"order_stockout" : {
+				"text" : "缺货登记",
+				"url" : rooturl + "/admin/order/stockout"
+			},
+			"order_shipments" : {
+				"text" : "发货单列表",
+				"url" : rooturl + "/admin/order/shipments"
+			},
+			"order_returned" : {
+				"text" : "缺货单列表",
+				"url" : rooturl + "/admin/order/returned"
+			}
+			
+		}
+	},
+	"email" : {
+		"text" : "邮箱",
+		"default" : "email_manage",
+		"children" : {
+			"email_manage" : {
+				"text" : "邮件列表",
+				"url" : rooturl + "/admin/email/index"
+			},
+			"email_subscription" : {
+				"text" : "邮件发送",
+				"url" : rooturl + "/admin/email/send"
+			}
+		}
+	},
+	"conslut" : {
+		"text" : "咨询",
+		"default" : "conslut_manage",
+		"children" : {
+			"conslut_manage" : {
+				"text" : "咨询管理",
+				"url" : rooturl + "/admin/consult/index"
+			}
+		}
+	},
+	"info" : {
+		"text" : "资讯",
+		"default" : "info_manage",
+		"children" : {
+			"info_manage" : {
+				"text" : "资讯管理",
+				"url" : rooturl + "/admin/information/index"
+			},
+				"info_sort" : {
+					"text" : "资讯分类",
+					"url" : rooturl + "/admin/information/sortindex"
+				},
+				"info_sortadd" : {
+					"text" : "添加分类",
+					"url" : rooturl + "/admin/information/sort"
+				},
+			"info_add" : {
+				"text" : "资讯添加",
+				"url" : rooturl + "/admin/information/add"
+			}
+		}
+	},
+
+	"message" : {
+		"text" : "短消息",
+		"default" : "message_manage",
+		"children" : {
+			"message_manage" : {
+				"text" : "短消息列表",
+				"url" : rooturl + "/admin/message/index"
+			},
+			"message_send" : {
+				"text" : "发送短消息",
+				"url" : rooturl + "/admin/message/send"
+			}
+			
+		}
+	},
+	"system" : {
+		"text" : "系统设置",
+		"default" : "system_manage",
+		"children" : {
+			"system_manage" : {
+				"text" : "商店信息设置",
+				"url" : rooturl + "/admin/system/index"
+			},
+			"system_email" : {
+				"text" : "系统邮件设置",
+				"url" : rooturl + "/admin/system/email_set"
+			},
+			"system_delivery" : {
+				"text" : "配送方式列表",
+				"url" : rooturl + "/admin/delivery/index"
+			},
+			"system_pay" : {
+				"text" : "支付方式列表",
+				"url" : rooturl + "/admin/payment/index"
+			},
+			"system_admin" : {
+				"text" : "管理员列表",
+				"url" : rooturl + "/admin/system/admin"
+			},
+			"system_admin" : {
+				"text" : "添加管理员",
+				"url" : rooturl + "/admin/system/add_admin"
+			},
+			"system_badword" : {
+				"text" : "敏感词列表",
+				"url" : rooturl + "/admin/system/badword"
+			},
+			"system_admin" : {
+				"text" : "添加敏感词",
+				"url" : rooturl + "/admin/system/add_badword"
+			}
+			
+			
+		}
+	}
+
+}
+</script>
+<script type="text/javascript">
+
+</script>
+
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/index.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="back_nav noprint">
+    <div class="back_nav_list">
+           
+    </div>
+    <div class="shadow"></div>
+    <div class="close_float"><img src="<?php echo $this -> RootUrl(); ?>/adminres/images/close2.gif" /></div>
+</div>
+<div id="head" class="noprint">
+    <div id="logo"><a href="index.php"><img src="<?php echo $this -> RootUrl(); ?>/adminres/images/logo.jpg" alt="ECMall" /></a></div>
+    <div id="menu"><span>您好
+    <?php echo $this->adminName;?>，
+    <a href="<?php echo $this -> url(array('module' => 'admin','controller'=>'login','action' => 'logout')) ?>">[退出]</a> <a href="#" target="_blank">[商城首页]</a></span>
+    <a href="javascript:;" class="menu_btn1" id="iframe_refresh">刷新</a>
+    <a href="<?php echo $this -> url(array('controller' => 'cache','action' => 'index')) ?>" class="menu_btn2" id="clear_cache">更新缓存</a>
+    <a href="#" id="back_btn"><img src="<?php echo $this -> RootUrl(); ?>/adminres/images/tiring_room_nav.gif" /></a>
+    </div>
+    <ul id="nav">
+    </ul>
+    <div id="headBg"></div>
+</div>
+<div id="content">
+    <div id="left" class="noprint">
+        <div id="leftMenus">
+            <dl id="submenu">
+                <dt><a class="ico1" id="submenuTitle" href="javascript:;"></a></dt>
+            </dl>
+            <dl id="history" class="history">
+                <dt>
+                    <a class="ico2" id="historyText" href="#">操作历史</a>
+                </dt>
+            </dl>
+         </div>
+    </div>
+    <div id="right">
+        <iframe frameborder="0" style="display:none;" width="100%" id="workspace"></iframe>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> ECMall </title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/admin.js" charset="utf-8"></script>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+</head>
+<body>
+<div class="mrightTop">
+  <div class="fontl">
+       <div class="left" style="font-size:16px;color:#999;">
+          <p>商品咨询详情</p>
+      </div>
+  </div>
+  <div class="fontr"> </div>
+</div>
+<div class="tdare">
+<form action="<?php echo $this -> RootUrl(); ?>/admin/consult/reply" method="post" name="form" >
+<div style="text-align:center;">
+<input type="hidden" value="<?php echo $this->data['id'] ;?>" name="id"/>
+<h4 style="color:#999;"><font color="red">问题:</font><?php echo $this->data['question'] ;?></h4><br />
+<h4 style="color:blue">回复:</h4><textarea rows="15" cols="60" name="reply"></textarea><br />
+<input type="reset" value="重置" name="reset"/>
+<input type="submit" value="提交" name="submit"/>
+</div>
+</form>
+  <div class="clear"></div>  
+</div>
+<p id="page_footer">&copy;.&copy;。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。&copy;.&copy;</p>
+</body>
+</html>

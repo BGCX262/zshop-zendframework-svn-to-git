@@ -1,0 +1,45 @@
+<?php if($this -> totalPage > 1){?>
+<style>#adminpage li {display: inline;list-style-type: none;padding-left: 15px;}
+       #adminpage a:link {text-decoration: none;}
+</style>
+<div id="adminpage">
+	<ul>
+		<li><?php 
+		if($this -> page==1){ 
+		    echo '首页';
+		}else{
+		    echo '<a href="' . $this -> GetUrl() . '/page/1">首页</a>';
+		}?></li>
+		<li>
+            <?php if($this -> page > 1){ ?>
+                <a
+			href="<?php echo $this -> GetUrl() . '/page/' . ($this -> page - 1); ?>">上一页</a>
+            <?php }else{ echo '上一页';} ?>
+            </li>
+		<li>
+            <?php if($this -> page < $this -> totalPage){ ?>
+                <a
+			href="<?php echo $this -> GetUrl() . '/page/' . ($this -> page + 1); ?>">下一页</a>
+            <?php }else{ echo '下一页';} ?>
+            </li>
+		<li><?php 
+		if($this -> page==$this ->totalPage){ 
+		    echo '未页';
+		}else{
+		    echo '<a href="' . $this -> GetUrl() . '/page/' . $this -> totalPage . '">末页</a>';
+		}?></li>
+		<li>跳转到第<select name="selectpage" onchange="window.location = '<?php echo $this -> GetUrl() . '/page/';?>' + this.value">
+            	<?php
+            for($i = 1; $i <= $this->totalPage; $i ++) {
+                if ($i == $this->page) {
+                    echo '<option value="' . $i . '" selected>' . $i . '</option>';
+                } else {
+                    echo '<option value="' . $i . '">' . $i . '</option>';
+                }
+            }
+            ?>
+            </select>页</li>
+        <li>当前第<?php echo $this->page;?>页,共<?php echo $this -> totalPage;?>页</li>
+	</ul>
+</div>
+<?php } ?>

@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ECMall</title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/adminres/js/admin.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/js/ckeditor/ckeditor.js"></script>
+<style type="text/css">
+<!--
+body {
+	background: #fcfdff
+}
+
+#tab ul li {
+	display:inline;
+	line-height:35px;
+	margin:3px 0 3px 2px;
+	border:1px solid #ccc;
+	padding:3px 25px;
+	background-color:#09F;
+	color:#fff;
+	font-weight:bold;
+	cursor:pointer;
+}
+#tab ul {
+	padding-left:20px;
+}
+-->
+</style>
+<script type="text/javascript">
+var ofck;
+window.onload=function(){
+	ofck = CKEDITOR.replace("description");	
+}
+
+$(document).ready(
+  function(){
+	//绑定tab下li对象单击事件
+	$("#tab li").click(
+		//单击事件函数
+    	function(){
+			var tabName = new Array();
+			//将li的id值存入数组
+			$("#tab li").each(function(index,domEle){
+					tabName[index] = $(domEle).attr('id');
+				});
+			//显示的ID
+			var displayId = 'tab_' + $(this).attr('id');
+			//循环设置tab的显示与隐藏
+			for(var i=0;i<tabName.length;i++){
+				var tabId = 'tab_' + tabName[i];
+				if(tabId == displayId){
+					//等于显示ID，显示
+					$("#" + tabName[i]).css("color", "#000");
+					$("#" + tabId).css("display", "block");
+				}else{
+					//不等于显示ID，隐藏
+					$("#" + tabName[i]).css("color", "#fff");
+					$("#" + tabId).css("display", "none");
+				}
+			}
+		}
+  	  );
+	  //鼠标移入时改变li背景
+	  $("#tab li").mouseover(
+	  function(){
+		  $('#' + $(this).attr('id')).css("background-color","#098");
+		  }
+	  );
+	  //鼠标移出时还原li背景
+	  $("#tab li").mouseout(
+	  function(){
+		  $('#' + $(this).attr('id')).css("background-color","#09F");
+		  }
+	  );
+  }
+);
+
+</script>
+</head>
+<body>
+<div id="rightTop">
+  <p>添加品牌</p>
+  <ul class="subnav">
+    <li><a class="btn1" href="<?php echo $this->RootUrl()?>/admin/goodsbrand/index">品牌管理</a></li>
+  </ul>
+</div>
+<div class="info">
+  <div id="tab">
+    <ul>
+      <li id="basic" style="color:#000;">基本信息</li>
+      <li id="detail">详细描述</li>
+      <li id="type">商品属性</li>
+      <li id="album">商品相册</li>
+    </ul>
+  </div>
+  <form method="post" id="addform"  name="addform" enctype="multipart/form-data" action="<?php echo $this->url(array('action' => 'insert'));?>">
+  <!--商品基信息页tab-->
+  <div id="tab_basic" style="display:block;">
+    <table class="infoTable">
+      <tr>
+        <th></th>
+        <td class="paddingT15"></td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 商品名称:</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="goods_name" type="text" style="width:200px" />*</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 商品分类:</th>
+        <td class="paddingT15 wordSpacing5">
+        <select name="cat_id" style="width:130px;">
+          <?php 
+              foreach($this -> catArray as $catDetail){
+                      $blank ='';
+                      for($i=0;$i<$catDetail['depth'];$i++){
+                          $blank = $blank . '&nbsp;&nbsp;&nbsp;&nbsp';
+                      }
+                  echo "<option value='{$catDetail['id']}'>{$blank}{$catDetail['catname']}</option>";
+              }
+          ?>
+        </select>
+        *</td>
+      </tr>
+       <tr>
+        <th class="paddingT15"> 商品品牌:</th>
+        <td class="paddingT15 wordSpacing5">
+        <select name="goods_brand" style="width:130px;">
+        <option value="">选择品牌</option>
+        <?php foreach($this -> goodsBrand as $brand){ ?>
+        	<option value="<?php echo $brand -> id;?>"><?php echo $this->escape($brand -> brand_name);?></option>
+        <?php }?>
+        </select>
+        </td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 售价:</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="shop_price" type="text" />最多两位小数*</td>
+      </tr>
+        <tr>
+        <th class="paddingT15"> 市场价:</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="market_price" type="text" />最多两位小数</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 推荐商品:</th>
+        <td class="paddingT15 wordSpacing5"><input name="recommend" type="checkbox" />推荐</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 是否上架:</th>
+        <td class="paddingT15 wordSpacing5"><input name="sale" type="checkbox" checked/>上架</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 库存量:</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="stock" type="text" value="-1" />-1表示忽略库存</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 商品图片:</th>
+        <td class="paddingT15 wordSpacing5"><input name="goods_pic" type="file" />*</td>
+      </tr>
+    </table>
+    </div>
+    <!--商品详细描述页tab-->
+    <div id="tab_detail" style="display:none;padding-left:20px;padding-right:20px;">
+    <table class="infoTable">
+      <tr>
+        <td class="paddingT15 wordSpacing5"><textarea class="infoTableInput2" name="description"></textarea></td>
+      </tr>
+      <tr>
+        <td class="paddingT15 wordSpacing5"><b>添加图片</b>&nbsp;&nbsp;<input name="attach" type="file" onchange="upLoad();"/></td>
+      </tr>
+   
+    </table>
+    </div>
+    <!--商品属性页tab-->
+    <div id="tab_type" style="display:none;">
+    <table class="infoTable">
+      <tr>
+        <th class="paddingT15"> 商品类型:</th>
+        <td class="paddingT15 wordSpacing5">
+        <select name="goods_type" onchange="appendProperty(this)" >
+        <option selected value="">请选择商品类型</option>
+        <?php foreach($this -> goodsType as $type){ ?>
+        	<option value="<?php echo $type -> id;?>"><?php echo $this->escape($type -> type_name);?></option>
+        <?php }?>
+        </select>
+        </td>
+        </tr><td colspan="2">
+          <table id="plist">
+          <tr><th></th><td></td></tr>
+          </table>
+      </td>
+    </table>
+    </div>
+    <!--商品相册tab-->
+    <div id="tab_album" style="display:none;">
+    <table class="infoTable" id="imgtable">
+      <tr>
+        <th class="paddingT15"><input type="file" name="goods_img[]" /></th>
+        <td class="paddingT15"><a style="text-decoration:none;" href="#" onclick="imgadd()">增加图片</a></td>
+      </tr>
+    </table>
+    </div>
+    <table>
+       <tr>
+        <th></th>
+        <td class="ptb20"><input class="formbtn" type="submit" name="submit" value="提交"/>
+          <input class="formbtn" type="reset" name="Reset" value="重置" /><input type="button"  onclick="upload();" /></td>
+      </tr>
+    </table>
+  </form>
+</div>
+<p id="page_footer">&copy;.&copy;。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。&copy;.&copy;</p>
+<iframe name='fileframe'></iframe>
+<script type="text/javascript">
+
+//ajax获取商品属性列表
+function appendProperty(selectObj){
+	$("#plist").html('');
+	if(selectObj.value==""){
+		return
+	}
+	var url = "<?php echo $this->url(array('controller'=>'goodstypeproperty', 'action'=>'goodsproperty'))?>" + '/typeId/' + selectObj.value;
+	$.getJSON(url, function(data){
+	  $.each(data, function(i,item){
+	  var content = '<tr><th class="paddingT15">' + item.property_name + ':</th><td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="plist[' + item.property_id + ']" type="text" /></td></tr>';
+	  $("#plist").append(content);
+  	  });
+	});
+}
+
+//增加像册图片上传行
+function imgadd(){
+	var row = '<tr><th class="paddingT15"><input type="file" name="goods_img[]" /></th><td class="paddingT15"><a style="text-decoration:none;" href="#" onclick="imgdel(this)">删除图片</a></td></tr>';
+	 $("#imgtable").append(row);
+	}
+	
+//删除像册图片上传行
+function imgdel(eleObj){
+	$(eleObj).parent().parent().remove();
+}
+
+//iframe上传图片
+function upload(){
+	$("#addform").submit();
+	alert('xx');
+}
+
+</script>
+</body>
+</html>

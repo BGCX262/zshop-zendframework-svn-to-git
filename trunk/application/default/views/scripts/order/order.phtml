@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="<?php echo $this->RootUrl();?>/css/order.css" />
+<title>myorder</title>
+</head>
+
+<body>
+<div id="welcome">
+	<div class="left">你好，欢迎来到源码商城！ [请登录] <a href="#">[免费注册]</a></div>
+    <div class="right">购物车 | 交易安全 | 帮助</div>
+</div>
+<!-- end welcome-->
+<div id="logo">
+	<div class="img"><img src="<?php echo $this->RootUrl();?>/images/loglo.jpg" /></div>
+    <div class="form">
+    <form method="get" action="" >
+    	<input type="text" name="search" />
+        <select name="catalog">
+        	<option value="0">所以分类</option>
+        </select>
+        <input type="image" src="<?php echo $this->RootUrl();?>/images/search.jpg" class="image" />
+    </form>
+    </div>
+</div>
+<!-- end logo-->
+<div id="menu">
+	<ul>
+    	<li><a href="#">首页</a></li>
+        <li><a href="#">商品中心</a></li>
+        <li><a href="#">新闻中心</a></li>
+        <li><a href="#">商城活动</a></li>
+        <li><a href="#">品牌列表</a></li>
+        <li><a href="#">帮助中心</a></li>
+        <li><a href="#">发货通知</a></li>
+        <li><a href="#">在线留言</a></li>
+    </ul>
+	 <p> 您的购物车有0件商品  去结算</p>
+</div>
+<!-- end menu-->
+<div id="main">
+	<div id="message">
+		<font>收货人信息</font> <a href="#">修改</a>
+		<p>收货人:XXX</p>
+		<p>收货地址:湖南省 长沙市 芙蓉区</p>
+		<p>邮政编码:12335</p>
+		<p>联系电话:3141242</p>
+	</div>
+	<div id="deliver">
+		<font>送货方式</font> <a href="#">修改</a>
+		<p>申请快递</p>
+	</div>
+	<div id="payment">
+		<font>付款方式</font> <a href="#">修改</a>
+		<p>网银支付宝</p>
+	</div>
+	<div id="title">商品清单</div>
+	<div id="list">
+		<p class="shoping">商家:源码商城</p>
+		<a href="#" class="shop">回到购物车，删除或添加商品</a>
+		<div id="clear"></div>
+		<div>
+		<table class="table">
+			<tr class="th">
+				<td class="name">商品名称</td>
+				<td>价格</td>
+				<td>折扣</td>
+				<td>数量</td>
+				<td>小计</td>
+			</tr>
+			<tr>
+				<td class="name">秋装122332自然波浪假雨件棉机上衣*现货</td>
+				<td>￥55.00</td>
+				<td>无</td>
+				<td>1</td>
+				<td>55.00</td>
+			</tr>
+			<tr>
+				<td class="name">秋装122332自然波浪假雨件棉机上衣*现货</td>
+				<td>￥55.00</td>
+				<td>无</td>
+				<td>1</td>
+				<td>55.00</td>
+			</tr>
+			<tr>
+				<td class="name">秋装122332自然波浪假雨件棉机上衣*现货</td>
+				<td>￥55.00</td>
+				<td>无</td>
+				<td>1</td>
+				<td>55.00</td>
+			</tr>
+			<tr>
+				<td colspan="5">
+					<div class="con">运费:10元 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商品金额总计:<font>175.00元</font>&nbsp;&nbsp;&nbsp;<a href="#">索取发票</a></div>
+				</td>
+			</tr>
+		</table>
+		</div>
+	</div>
+	<div id="ordersubmit">
+		<form method="" action="" name="form">
+			请输入验证码:<input type="text" name="ymz" size="6"/> <img src="<?php echo $this->RootUrl();?>/order/validate" id="code"/><a href="#">看不清,换一张</a><br /><br />
+			请核对以上信息,点击"提交订单"<input src="<?php echo $this->RootUrl();?>/images/submitorder.jpg" type="image" />
+		</form>
+	</div>
+</div>
+<div id="foot">
+	<P>长沙源码计算机信息咨询有限公司 版权所有 &copy; 2012 湘ICP备1212121213号 | 0731-3743219</P>
+</div>
+</body>
+</html>

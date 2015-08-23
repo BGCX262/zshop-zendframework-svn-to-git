@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="X-UA-Compatible" charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> ECMall </title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/js/jquery.js"></script>
+<script type="text/javascript">
+	var ofck;
+	window.onload=function (){
+		ofck = CKEDITOR.replace("content");	
+	}
+
+	function getid(){
+		
+		var val = $("#val").attr("value");
+		if(val==""){
+			$("#val2").html("");
+			}
+		var url = "<?php echo $this->RootUrl()?>/admin/information/ajax";
+			$.getJSON(url,{id:val},function(data){
+				$("#val2").html("");
+				$.each(data,function(i,n){
+					var options = '<option value='+n.id+'>' + n.cat_name +'</option>';
+					$("#val2").append(options);  
+					});
+				  });
+
+		}
+</script>
+<script language="javascript" type="text/javascript" src="<?php echo $this->RootUrl()?>/js/date/WdatePicker.js"></script>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+</head>
+<body><div id="rightTop">
+  <p>文章</p>
+  <ul class="subnav">
+    <li><a class="btn1" href="<?php echo $this->RootUrl()?>/admin/information/index">管理</a></li>
+    <li><span>添加文章</span></li>
+  </ul>
+</div>
+ <form method="post" enctype="multipart/form-data" id="test_form" action="<?php echo $this->RootUrl();?>/admin/information/addui">
+       <div class="left">
+          一级分类:
+          <select id="val" onchange="getid()" name="sort" style="width:120px; height:20px;">
+          <option value="">-----一级分类-----</option>
+          <?php 
+          	foreach ($this->all as $val){      		
+          		if($val['pid'] == 0 ){
+          			
+          		echo "<option value=".$val['id'].">".$val['cat_name']."</option>";
+          		}
+          	}
+          
+          ?>
+          
+          </select>
+          二级分类:
+          <select id="val2" name="sort2" style="width:120px; height:20px;">
+          <option value="">-----二级分类-----</option>
+          </select>
+      </div>
+
+<div  style="margin-top:0px; ">
+<div id="iframe_left" style="width:80%">
+ 
+    <table class="infoTable">
+      <tr>
+          <th></th>
+        <td class="paddingT15"><h3>文章信息</h3></td>
+      </tr>
+       <tr>
+        <th class="paddingT15"> 标题:</th>
+        <td><input name="title" type="text" size="70" id="to" value=""/></td>
+      </tr>
+       <tr>
+        <th class="paddingT15"> 文章内容:</th>
+        <td class="paddingT15 wordSpacing5"><textarea id="content" name="content"></textarea></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td class="ptb20"><input class="formbtn" type="submit" name="submit" value="提交" />&nbsp;&nbsp;&nbsp;&nbsp;
+          <input class="formbtn" type="reset" name="Reset" value="重置" /></td>
+      </tr>
+    </table>
+ 
+  </div>
+
+</div>
+<div style="clear:both;"></div>
+ </form>
+<p id="page_footer">Copyright 2003-2009 ShopEx Inc.,All rights reserved.</p>
+</body>
+</html>

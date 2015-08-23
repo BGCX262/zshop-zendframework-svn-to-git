@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="X-UA-Compatible" charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> ECMall </title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+//<!CDATA[
+var SITE_URL = "http://localhost/ecmall";
+//]]>
+</script>
+<script type="text/javascript" src="js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/admin.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript" src="<?php echo $this->RootUrl()?>/js/date/WdatePicker.js"></script>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+</head>
+<body><div id="rightTop">
+  <p>会员</p>
+  <ul class="subnav">
+    <li><a class="btn1" href="<?php echo $this->RootUrl()?>/admin/member/index">管理</a></li>
+    <li><span>添加会员</span></li>
+  </ul>
+</div>
+<div class="info">
+  <form method="post" enctype="multipart/form-data" id="test_form" action="<?php echo $this->RootUrl();?>/admin/order/update-form">
+    <table class="infoTable">
+      <tr>
+          <th></th>
+        <td class="paddingT15">修改会员信息</font></td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 用户名:<input name="id" type="hidden" id="id" value="<?php echo $this->detail['id'];?>"/></th>
+        <td class="paddingT15 wordSpacing5"><input name="user_name" type="text" id="user_name" size="15" value="<?php echo $this->detail['user_name'];?>"/></td>
+      </tr>
+       <tr>
+        <th class="paddingT15"> 性别:</th>
+        <td class="paddingT15 wordSpacing5">男:<input type="radio" name="sex" value="0" <?php if($this->detail['sex']==0) echo 'checked'; ?>/> &nbsp;&nbsp;女:<input type="radio" name="sex" value="1" <?php if($this->detail['sex']==1) echo 'checked'; ?>/></td>
+      </tr>
+       <tr>
+        <th class="paddingT15"> 出生日期:</th>
+        <td class="paddingT15 wordSpacing5">
+		<input class="Wdate" type="text" onClick="WdatePicker()" name="date" size="15" value="<?php echo date("Y-m-d" ,$this->detail['birthday']);?>">
+	</td>
+      </tr>
+       <tr>
+        <th class="paddingT15"> 电话:</th>
+        <td class="paddingT15 wordSpacing5"><input name="phone" type="text" size="13" value="<?php echo $this->detail['phone'];?>"/></td>
+      </tr>
+       <tr>
+        <th class="paddingT15"> 邮箱:</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="email" type="text" value="<?php echo $this->detail['email'];?>"/></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td class="ptb20"><input class="formbtn" type="submit" name="submit" value="提交" />&nbsp;&nbsp;&nbsp;&nbsp;
+          <input class="formbtn" type="reset" name="Reset" value="重置" /></td>
+      </tr>
+    </table>
+  </form>
+</div>
+<p id="page_footer">Copyright 2003-2009 ShopEx Inc.,All rights reserved.</p>
+</body>
+</html>

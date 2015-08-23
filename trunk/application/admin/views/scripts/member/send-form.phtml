@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+#member{width:100%; overflow:hidden;}
+.sel{text-align:center;border:none; width:95%;height:200px; margin-top:15px;}
+</style>
+<script type="text/javascript" src="<?php echo $this -> RootUrl(); ?>/js/jquery.js"></script>
+<script type="text/javascript">
+function grade(obj){
+	var grade_id = obj.value;
+	var p_val = $("#to",window.parent.document).attr("value");
+	if(p_val.length == 0) {$("#to",window.parent.document).attr("value",grade_id) }else{ $("#to",window.parent.document).attr("value",p_val+';'+grade_id)}
+}	
+</script>
+
+</head>
+
+<body>
+<div id="member">
+  		<p>联系人</p>
+	<form name="form" action="<?php echo $this->RootUrl();?>/admin/member/send-form" method="post">
+		<input type="text" name="key" size="17"/>&nbsp;&nbsp;<input type="image" src="<?php echo $this->RootUrl();?>/adminres/images/e_s.gif" /> 
+        </form>
+    <select name="member"  multiple="multiple" class="sel" >
+	<?php foreach($this->data as $member){?>
+   	<option value="<?php echo $member['email'] ?>" onclick="grade(this)"><?php echo $member['user_name'] ?></option>
+	<?php }?>
+  </select>
+</div>
+    
+</body>
+</html>

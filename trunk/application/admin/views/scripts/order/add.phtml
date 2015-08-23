@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="X-UA-Compatible" charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> ECMall </title>
+<link href="<?php echo $this -> RootUrl(); ?>/adminres/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+//<!CDATA[
+var SITE_URL = "http://localhost/ecmall";
+//]]>
+</script>
+<script type="text/javascript" src="js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/ecmall.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/admin.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript" src="<?php echo $this->RootUrl()?>/js/date/WdatePicker.js"></script>
+<style type="text/css">
+<!--
+body {background: #fcfdff}
+-->
+</style>
+</head>
+<body><div id="rightTop">
+  <ul class="subnav">
+    <li><a class="btn1" href="<?php echo $this->RootUrl()?>/admin/order/index">管理</a></li>
+    <li><span>订单列表</span></li>
+  </ul>
+</div>
+<div class="info">
+  <form method="post" enctype="multipart/form-data" id="test_form" action="<?php echo $this->RootUrl();?>/admin/member/add-form">
+    <table class="infoTable">
+    <tr>
+          <td></td>
+        <td class="paddingT15">会员名称:<input type="text" name="member" /></td>
+      </tr>
+      <tr>
+          <th>商品分类</th>
+        <td class="paddingT15"><select><option>-请选择-</option></select></td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 商品品牌:</th>
+        <td class="paddingT15 wordSpacing5"><select><option>-请选择-</option></select></td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> 商品:</th>
+        <td class="paddingT15 wordSpacing5">jquery 显示商品列表</td>
+      </tr>
+       <tr>
+        <th class="paddingT15"> 电话:</th>
+        <td class="paddingT15 wordSpacing5"><input name="phone" type="text" size="13"/></td>
+      </tr>
+       <tr>
+        <th class="paddingT15"> 邮箱:</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="email" type="text"/></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td class="ptb20"><input class="formbtn" type="submit" name="submit" value="提交" />&nbsp;&nbsp;&nbsp;&nbsp;
+          <input class="formbtn" type="reset" name="Reset" value="重置" /></td>
+      </tr>
+    </table>
+  </form>
+</div>
+<p id="page_footer">Copyright 2003-2009 ShopEx Inc.,All rights reserved.</p>
+</body>
+</html>
